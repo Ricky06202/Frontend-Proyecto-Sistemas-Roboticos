@@ -482,6 +482,16 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.21.5.tgz#acad351d582d157bb145535db2a6ff53dd514b5c"
   integrity sha512-tQd/1efJuzPC6rCFwEvLtci/xNFcTZknmXs98FYDfGE4wP9ClFV98nyKrzJKVPMhdDnjzLhdUyMX4PsQAPjwIw==
 
+"@fontsource/inknut-antiqua@^5.0.13":
+  version "5.0.13"
+  resolved "https://registry.yarnpkg.com/@fontsource/inknut-antiqua/-/inknut-antiqua-5.0.13.tgz#0828594d951e98e9b50c6a5e26afba1ea423c631"
+  integrity sha512-8ryt/xITq0XJLyCoG40eDYvjQf4GNyHpW6r1d7zLOVrgAJsy13hkIbAOD9gRmLroWXXTQDhZMGAn8wzSSP5dOg==
+
+"@fontsource/poppins@^5.0.14":
+  version "5.0.14"
+  resolved "https://registry.yarnpkg.com/@fontsource/poppins/-/poppins-5.0.14.tgz#c7ede0730859dc0c1b85d1a92e4cb0f2223db0ae"
+  integrity sha512-nmM1zpPo3Uh4JcGAVSQuWaZNYh2FbbwWhZ5t6hRaynmJaNTBW85d3nEh9zMmzI0HX7X5xqQVdRHeDatKpOGsnA==
+
 "@img/sharp-darwin-arm64@0.33.4":
   version "0.33.4"
   resolved "https://registry.yarnpkg.com/@img/sharp-darwin-arm64/-/sharp-darwin-arm64-0.33.4.tgz#a1cf4a7febece334f16e0328b9689f05797d7aec"

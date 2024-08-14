@@ -1,12 +1,16 @@
-<nav class="flex items-center justify-between py-8 text-xl">
-	<div class="flex items-center gap-2">
-		<picture ><img class="aspect-square h-20" src="Logo.png" alt="Logo EduVision"></picture>
-		<h1>EduVision</h1>
-	</div>
-	<ul class="flex gap-10">
-		<li class="hover:text-blue-700">Home</li>
-		<li class="hover:text-blue-700">About</li>
-		<li class="hover:text-blue-700">How It Works</li>
+---
+import Logo from './Logo.astro'
+---
+
+<nav class='flex items-center justify-between py-8 text-md'>
+	<Logo />
+	<ul class='flex gap-2'>
+		<li class='p-4 transition duration-150 cursor-pointer hover:text-blue-700'>Home</li>
+		<li class='p-4 transition duration-150 cursor-pointer hover:text-blue-700'>About</li>
+		<li class='p-4 transition duration-150 cursor-pointer hover:text-blue-700'>How It Works</li>
 	</ul>
-	<button class="px-4 py-3 text-white bg-blue-700 rounded-lg">Sing Up Now</button>
+	<button class='relative px-6 py-3 overflow-hidden font-bold text-white bg-blue-700 rounded-lg group'>
+		<span class='absolute top-0 left-0 w-full h-0 transition-all duration-300 ease-in-out bg-black/10 group-hover:h-full group-hover:bottom-0 group-hover:top-auto'
+		></span><a class="relative z-10">Sign Up Now</a></button
+	>
 </nav>
