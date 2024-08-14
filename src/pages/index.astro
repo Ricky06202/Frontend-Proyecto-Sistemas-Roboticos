@@ -1,9 +1,10 @@
 ---
-import Layout from '@/layouts/Layout.astro'
+import { CurrentPage } from '@/constants/pages'
+import LayoutLandingPage from '@/layouts/LayoutLandingPage.astro'
 ---
 
-<Layout title='Frontend con Astro'>
+<LayoutLandingPage title='Frontend con Astro' page={CurrentPage.Home}>
 	Pagina Principal	
-</Layout>
+</LayoutLandingPage>
 
 <style></style>
