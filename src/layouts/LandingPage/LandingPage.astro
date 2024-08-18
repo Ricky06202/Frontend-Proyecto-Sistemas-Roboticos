@@ -4,11 +4,11 @@ import '@fontsource/poppins'
 
 import Footer from '@/layouts/LandingPage/components/Footer.astro'
 import NavBar from '@/layouts/LandingPage/components/NavBar.astro'
-import type { CurrentPage } from '@/constants/pages'
+import type { LandingPages } from '@/constants/pages'
 
 interface Props {
 	title: string
-	page: CurrentPage
+	page: typeof LandingPages.Home
 }
 
 const { title, page } = Astro.props
