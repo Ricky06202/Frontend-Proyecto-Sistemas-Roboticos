@@ -1,7 +1,7 @@
 ---
 import Button from '@/components/Button.astro'
 import Logo from '@/components/Logo.astro'
-import { CurrentLandingPage, LandingPages } from '@/constants/pages'
+import { AuthPages, CurrentLandingPage, LandingPages } from '@/constants/pages'
 
 interface Props {
 	currentPage: typeof LandingPages.Home
@@ -30,6 +30,6 @@ const isActive = (page: typeof LandingPages.Home): string => {
 	</ul>
 	<Button
 		text='Sign Up Now'
-		href='/signup'
+		href={AuthPages.SignUp.url}
 	/>
 </nav>
