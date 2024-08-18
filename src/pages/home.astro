@@ -1,0 +1,12 @@
+---
+import { CurrentPage } from '@/constants/pages'
+import LandingPage from '@/layouts/LandingPage/LandingPage.astro'
+
+// return Astro.redirect('/about')
+---
+
+<LandingPage title='Frontend con Astro' page={CurrentPage.Home}>
+	Pagina Principal	
+</LandingPage>
+
+<style></style>

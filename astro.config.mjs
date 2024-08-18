@@ -8,5 +8,9 @@ export default defineConfig({
   devToolbar: {
     enabled: false
   },
-  integrations: [react(), tailwind()]
+  integrations: [react(), tailwind()],
+  output: "server",
+  redirects: {
+    '/': '/home'
+  }
 });

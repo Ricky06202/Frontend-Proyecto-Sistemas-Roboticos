@@ -2,16 +2,16 @@
 // https://fontsource.org/fonts/poppins/install
 import '@fontsource/poppins'
 
-import Footer from '@/components/Footer.astro'
-import NavBar from '@/components/NavBar.astro'
+import Footer from '@/layouts/LandingPage/components/Footer.astro'
+import NavBar from '@/layouts/LandingPage/components/NavBar.astro'
 import type { CurrentPage } from '@/constants/pages'
 
 interface Props {
-	title: string,
+	title: string
 	page: CurrentPage
 }
 
-const {title, page} = Astro.props
+const { title, page } = Astro.props
 ---
 
 <!doctype html>
@@ -29,7 +29,7 @@ const {title, page} = Astro.props
 		<link
 			rel='icon'
 			type='image/png'
-			href='Logo.png'
+			href='/Logo.png'
 		/>
 		<meta
 			name='generator'
@@ -39,7 +39,7 @@ const {title, page} = Astro.props
 	</head>
 	<body class='flex flex-col items-center'>
 		<div class='grid sm:max-w-[640px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px]'>
-			<NavBar currentPage={page}/>
+			<NavBar currentPage={page} />
 			<slot />
 			<Footer />
 		</div>
