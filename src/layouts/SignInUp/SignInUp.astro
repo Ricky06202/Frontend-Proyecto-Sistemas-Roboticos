@@ -1,48 +1,37 @@
 ---
 // https://fontsource.org/fonts/poppins/install
-import '@fontsource/poppins'
-import Welcome from './components/Welcome.astro'
+import "@fontsource/poppins";
+import Welcome from "./components/Welcome.astro";
 
 interface Props {
-	title: string
+  title: string;
 }
-const { title } = Astro.props
+const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang='es'>
-	<head>
-		<meta charset='UTF-8' />
-		<meta
-			name='description'
-			content='Astro description'
-		/>
-		<meta
-			name='viewport'
-			content='width=device-width'
-		/>
-		<link
-			rel='icon'
-			type='image/png'
-			href='Logo.png'
-		/>
-		<meta
-			name='generator'
-			content={Astro.generator}
-		/>
-		<title>{title}</title>
-	</head>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="Logo.png" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
 
-	<body class='flex flex-col items-center'>
-		<div class='grid sm:max-w-[640px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px]'>
-			<Welcome />
-			<slot />
-		</div>
-	</body>
+  <body class="flex flex-col items-center">
+    <div
+      class="grid sm:max-w-[640px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] py-10 lg:grid-cols-2 gap-36"
+    >
+      <Welcome />
+      <slot />
+    </div>
+  </body>
 </html>
 
 <style is:global>
-	:root {
-		font-family: 'Poppins', sans-serif;
-	}
+  :root {
+    font-family: "Poppins", sans-serif;
+  }
 </style>
