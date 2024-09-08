@@ -1,71 +1,82 @@
 ---
-import Button from "@/components/Button.astro";
-import Logo from "@/components/Logo.astro";
-import MenuIcon from "@/components/icons/MenuIcon.astro";
-import CloseIcon from "@/components/icons/CloseIcon.astro";
-import { AuthPages, LandingPages } from "@/constants/pages";
+import Button from '@/components/Button.astro'
+import Logo from '@/components/Logo.astro'
+import MenuIcon from '@/components/icons/MenuIcon.astro'
+import CloseIcon from '@/components/icons/CloseIcon.astro'
+import { AuthPages, LandingPages } from '@/constants/pages'
 
 interface Props {
-  currentPage: typeof LandingPages.Home;
+	currentPage: typeof LandingPages.Home
 }
 
-const { currentPage } = Astro.props;
+const { currentPage } = Astro.props
 
 const isActive = (page: typeof LandingPages.Home): string => {
-  return currentPage.title === page.title ? " text-blue-700" : "";
-};
+	return currentPage.title === page.title ? ' text-blue-700' : ''
+}
 ---
 
-<nav class="flex items-center justify-between py-8 text-md flex-wrap">
-  <Logo />
-  <input hidden type="checkbox" id="menu" />
-  <label for="menu" class="lg:hidden p-5 bg-blue-200 rounded-lg">
-    <MenuIcon id="openMenu" />
-    <CloseIcon id="closeMenu" class="hidden" />
-  </label>
-  <ul
-    id="menuList"
-    class="hidden lg:block flex gap-2 flex-col lg:flex-row flex-wrap w-full lg:space-x-2 items-center lg:w-auto"
-  >
-    {
-      Object.values(LandingPages).map((page) => (
-        <a
-          href={page.url}
-          class={
-            "p-4 transition duration-150 cursor-pointer hover:text-blue-700" +
-            isActive(page)
-          }
-        >
-          {page.title}
-        </a>
-      ))
-    }
-    <Button text="Sign Up Now" href={AuthPages.SignUp.url} class="lg:hidden" />
-  </ul>
-  <Button
-    text="Sign Up Now"
-    href={AuthPages.SignUp.url}
-    class="hidden lg:block"
-  />
+<nav class='flex flex-wrap items-center justify-between py-8 text-md'>
+	<Logo />
+	<input
+		hidden
+		type='checkbox'
+		id='menu'
+	/>
+	<label
+		for='menu'
+		class='p-5 bg-blue-200 rounded-lg lg:hidden'
+	>
+		<MenuIcon id='openMenu' />
+		<CloseIcon
+			id='closeMenu'
+			class='hidden'
+		/>
+	</label>
+	<ul
+		id='menuList'
+		class='flex flex-col flex-wrap items-center hidden w-full gap-2 lg:block lg:flex-row lg:space-x-2 lg:w-auto'
+	>
+		{
+			Object.values(LandingPages).map((page) => (
+				<a
+					href={page.url}
+					class={'p-4 transition duration-150 cursor-pointer hover:text-blue-700' + isActive(page)}
+				>
+					{page.title}
+				</a>
+			))
+		}
+		<Button
+			text='Sign Up Now'
+			href={AuthPages.SignUp.url}
+			class='lg:hidden'
+		/>
+	</ul>
+	<Button
+		text='Sign Up Now'
+		href={AuthPages.SignUp.url}
+		class='hidden lg:block'
+	/>
 </nav>
 
 <script>
-  const menu = document.getElementById("menu");
-  menu?.addEventListener("change", handleChange);
-  function handleChange(event: Event) {
-    const input = event.target as HTMLInputElement;
-    let isMenuOpen = input.checked;
-    const openMenu = document.getElementById("openMenu");
-    const closeMenu = document.getElementById("closeMenu");
-    const menuList = document.getElementById("menuList");
-    if (isMenuOpen) {
-      if (openMenu) openMenu.classList.add("hidden");
-      if (closeMenu) closeMenu.classList.remove("hidden");
-      if (menuList) menuList.classList.remove("hidden");
-    } else {
-      if (openMenu) openMenu.classList.remove("hidden");
-      if (closeMenu) closeMenu.classList.add("hidden");
-      if (menuList) menuList.classList.add("hidden");
-    }
-  }
+	const menu = document.getElementById('menu')
+	menu?.addEventListener('change', handleChange)
+	function handleChange(event: Event) {
+		const input = event.target as HTMLInputElement
+		let isMenuOpen = input.checked
+		const openMenu = document.getElementById('openMenu')
+		const closeMenu = document.getElementById('closeMenu')
+		const menuList = document.getElementById('menuList')
+		if (isMenuOpen) {
+			if (openMenu) openMenu.classList.add('hidden')
+			if (closeMenu) closeMenu.classList.remove('hidden')
+			if (menuList) menuList.classList.remove('hidden')
+		} else {
+			if (openMenu) openMenu.classList.remove('hidden')
+			if (closeMenu) closeMenu.classList.add('hidden')
+			if (menuList) menuList.classList.add('hidden')
+		}
+	}
 </script>
