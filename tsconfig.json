@@ -3,10 +3,9 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["src/*"],
+			"@constants/*": ["src/constants/*"],
 			"@components/*": ["src/components/*"],
 			"@pages/*": ["src/pages/*"],
-			"@modules/*": ["src/modules/*"],
 			"@attendance/*": ["src/modules/attendance/*"],
 			"@authentication/*": ["src/modules/authentication/*"],
 			"@landingPage/*": ["src/modules/landingPage/*"]

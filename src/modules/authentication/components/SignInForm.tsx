@@ -1,4 +1,5 @@
-import Button from '@/components/Button'
+import Button from '@components/Button'
+import { AuthPages } from '@constants/pages'
 
 export default function SignInForm() {
 	return (
@@ -42,7 +43,7 @@ export default function SignInForm() {
 					Already have an account?{' '}
 					<a
 						className='text-blue-700 hover:underline'
-						href='/sign-up'
+						href={AuthPages.SignUp.url}
 					>
 						Sign Up
 					</a>
