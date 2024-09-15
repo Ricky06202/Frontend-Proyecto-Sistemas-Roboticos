@@ -13,8 +13,7 @@ export default defineConfig({
 	redirects: {
 		'/': '/home',
 	},
-	adapter: vercel(),
-	image: {
-		service: passthroughImageService(),
-	},
+	adapter: vercel({
+		imageService: true,
+	}),
 })
