@@ -524,6 +524,20 @@
   resolved "https://registry.npmjs.org/@fontsource/poppins/-/poppins-5.0.14.tgz"
   integrity sha512-nmM1zpPo3Uh4JcGAVSQuWaZNYh2FbbwWhZ5t6hRaynmJaNTBW85d3nEh9zMmzI0HX7X5xqQVdRHeDatKpOGsnA==
 
+"@iconify-json/mingcute@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@iconify-json/mingcute/-/mingcute-1.2.0.tgz#b7d474be93bfcd743d3159b03ac6389c97fe1106"
+  integrity sha512-XEAOnEMwkv8BkHaeBZqiyVytrCBH8GffhUr7ozWeU77s5vodYq9J/hdWVK/cTah7PwcYSrzfXBkXjIek+u3+XQ==
+  dependencies:
+    "@iconify/types" "*"
+
+"@iconify/react@^5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@iconify/react/-/react-5.0.2.tgz#03d6aa43ed22737451a5d087b00b26b3e6e6895a"
+  integrity sha512-wtmstbYlEbo4NDxFxBJkhkf9gJBDqMGr7FaqLrAUMneRV3Z+fVHLJjOhWbkAF8xDQNFC/wcTYdrWo1lnRhmagQ==
+  dependencies:
+    "@iconify/types" "^2.0.0"
+
 "@iconify/tools@^4.0.5":
   version "4.0.5"
   resolved "https://registry.npmjs.org/@iconify/tools/-/tools-4.0.5.tgz"
@@ -541,7 +555,7 @@
     svgo "^3.3.2"
     tar "^6.2.1"
 
-"@iconify/types@^2.0.0":
+"@iconify/types@*", "@iconify/types@^2.0.0":
   version "2.0.0"
   resolved "https://registry.npmjs.org/@iconify/types/-/types-2.0.0.tgz"
   integrity sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==
@@ -4687,6 +4701,11 @@ zod@^3.23.8:
   version "3.23.8"
   resolved "https://registry.npmjs.org/zod/-/zod-3.23.8.tgz"
   integrity sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==
+
+zustand@^5.0.0-rc.2:
+  version "5.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/zustand/-/zustand-5.0.0-rc.2.tgz#d28d95ffb6f0b20cadbaea39210f18446a5bf989"
+  integrity sha512-o2Nwuvnk8vQBX7CcHL8WfFkZNJdxB/VKeWw0tNglw8p4cypsZ3tRT7rTRTDNeUPFS0qaMBRSKe+fVwL5xpcE3A==
 
 zwitch@^2.0.0, zwitch@^2.0.4:
   version "2.0.4"
