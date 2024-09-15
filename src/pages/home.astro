@@ -1,21 +1,24 @@
 ---
-import { LandingPages } from "@/constants/pages";
-import LandingPage from "@/layouts/LandingPage/LandingPage.astro";
-import Hero from "@/modules/home/components/Hero.astro";
-import Features from "@/modules/home/components/Features.astro";
-import Comments from "@/modules/home/components/Comments.astro";
-import Benefits from "@/modules/home/components/Benefits.astro";
-import CallToAction from "@/modules/home/components/CallToAction.astro";
+import { LandingPages } from '@/constants/pages'
+import LandingPage from '@landingPage/layout/LandingPage.astro'
+import Hero from '@landingPage/home/components/Hero.astro'
+import Features from '@landingPage/home/components/Features.astro'
+import Comments from '@landingPage/home/components/Comments.astro'
+import Benefits from '@landingPage/home/components/Benefits.astro'
+import CallToAction from '@landingPage/home/components/CallToAction.astro'
 
 // return Astro.redirect('/about')
 ---
 
-<LandingPage title="EduVision" page={LandingPages.Home}>
-  <Hero />
-  <Features />
-  <Benefits />
-  <Comments />
-  <CallToAction />
+<LandingPage
+	title='EduVision'
+	page={LandingPages.Home}
+>
+	<Hero />
+	<Features />
+	<Benefits />
+	<Comments />
+	<CallToAction />
 </LandingPage>
 
 <style></style>

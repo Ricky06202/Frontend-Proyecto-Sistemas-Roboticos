@@ -1,17 +1,20 @@
 ---
-import { LandingPages } from "@/constants/pages";
-import LandingPage from "@/layouts/LandingPage/LandingPage.astro";
-import History from "@/modules/about/components/History.astro";
-import MissionVision from "@/modules/about/components/MissionVision.astro";
-import Team from "@/modules/about/components/Team.astro";
-import Values from "@/modules/about/components/Values.astro";
+import { LandingPages } from '@/constants/pages'
+import LandingPage from '@landingPage/layout/LandingPage.astro'
+import History from '@landingPage/about/components/History.astro'
+import MissionVision from '@landingPage/about/components/MissionVision.astro'
+import Team from '@landingPage/about/components/Team.astro'
+import Values from '@landingPage/about/components/Values.astro'
 ---
 
-<LandingPage title="About" page={LandingPages.About}>
-  <History />
-  <MissionVision />
-  <Team />
-  <Values />
+<LandingPage
+	title='About'
+	page={LandingPages.About}
+>
+	<History />
+	<MissionVision />
+	<Team />
+	<Values />
 </LandingPage>
 
 <style></style>

@@ -1,17 +1,20 @@
 ---
-import { LandingPages } from "@/constants/pages";
-import LandingPage from "@/layouts/LandingPage/LandingPage.astro";
-import FAQs from "@/modules/howitworks/components/FAQs.astro";
-import Introduction from "@/modules/howitworks/components/Introduction.astro";
-import StepByStep from "@/modules/howitworks/components/StepByStep.astro";
-import Tutorial from "@/modules/howitworks/components/Tutorial.astro";
+import { LandingPages } from '@/constants/pages'
+import LandingPage from '@landingPage/layout/LandingPage.astro'
+import FAQs from '@landingPage/howitworks/components/FAQs.astro'
+import Introduction from '@landingPage/howitworks/components/Introduction.astro'
+import StepByStep from '@landingPage/howitworks/components/StepByStep.astro'
+import Tutorial from '@landingPage/howitworks/components/Tutorial.astro'
 ---
 
-<LandingPage title="How It Works" page={LandingPages.HowItWorks}>
-  <Introduction />
-  <StepByStep />
-  <Tutorial />
-  <FAQs />
+<LandingPage
+	title='How It Works'
+	page={LandingPages.HowItWorks}
+>
+	<Introduction />
+	<StepByStep />
+	<Tutorial />
+	<FAQs />
 </LandingPage>
 
 <style></style>
