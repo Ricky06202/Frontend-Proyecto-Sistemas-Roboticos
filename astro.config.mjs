@@ -1,4 +1,4 @@
-import { defineConfig, passthroughImageService } from 'astro/config'
+import { defineConfig } from 'astro/config'
 import react from '@astrojs/react'
 import tailwind from '@astrojs/tailwind'
 import vercel from '@astrojs/vercel/serverless'
@@ -13,7 +13,5 @@ export default defineConfig({
 	redirects: {
 		'/': '/home',
 	},
-	adapter: vercel({
-		imageService: true,
-	}),
+	adapter: vercel(),
 })
