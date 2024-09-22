@@ -9,9 +9,14 @@ export default function HistorialAsistencias() {
 	}
 	return (
 		<>
-			<div className='flex gap-4 justify-center'>
-				<h2>Historial de Asistencias</h2>
-				<button onClick={handleToggleAttendanceView}>{isSimpleAttendanceView ? 'Simple' : 'Detallada'}</button>
+			<div className='flex flex-col lg:flex-row gap-4 justify-center items-center'>
+				<h2 className='text-4xl '>Historial de Asistencias</h2>
+				<button
+					className='text-blue-500 text-2xl w-28 hover:underline focus:outline-none'
+					onClick={handleToggleAttendanceView}
+				>
+					{isSimpleAttendanceView ? 'Simple' : 'Detallada'}
+				</button>
 			</div>
 			{isSimpleAttendanceView ? <AsistenciaSimple /> : <AsistenciaDetallada />}
 		</>

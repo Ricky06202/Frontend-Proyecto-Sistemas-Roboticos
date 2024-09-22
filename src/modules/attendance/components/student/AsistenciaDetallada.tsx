@@ -3,7 +3,7 @@ export default function AsistenciaDetallada() {
 	return (
 		<section className='flex flex-col gap-4'>
 			<div className='flex gap-4 justify-center'>
-				<select>
+				<select className='focus:outline-none'>
 					<option
 						value='0'
 						disabled
@@ -16,7 +16,7 @@ export default function AsistenciaDetallada() {
 					<option value='3'>Programación</option>
 					<option value='4'>Base De Datos I</option>
 				</select>
-				<select>
+				<select className='focus:outline-none'>
 					<option
 						value='0'
 						disabled

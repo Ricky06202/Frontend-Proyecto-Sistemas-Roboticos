@@ -4,6 +4,7 @@ import Logo from '@components/Logo.astro'
 import MenuIcon from '@components/icons/MenuIcon.astro'
 import CloseIcon from '@components/icons/CloseIcon.astro'
 import { AuthPages, LandingPages } from '@constants/pages'
+import { Icon } from 'astro-icon/components'
 
 interface Props {
 	currentPage: typeof LandingPages.Home
@@ -25,10 +26,14 @@ const isActive = (page: typeof LandingPages.Home): string => {
 	/>
 	<label
 		for='menu'
-		class='p-5 bg-blue-200 rounded-lg lg:hidden'
+		class='p-5 lg:hidden text-4xl cursor-pointer hover:text-blue-500'
 	>
-		<MenuIcon id='openMenu' />
-		<CloseIcon
+		<Icon
+			name='mingcute:menu-line'
+			id='openMenu'
+		/>
+		<Icon
+			name='mingcute:close-square-line'
 			id='closeMenu'
 			class='hidden'
 		/>
@@ -69,14 +74,9 @@ const isActive = (page: typeof LandingPages.Home): string => {
 		const openMenu = document.getElementById('openMenu')
 		const closeMenu = document.getElementById('closeMenu')
 		const menuList = document.getElementById('menuList')
-		if (isMenuOpen) {
-			if (openMenu) openMenu.classList.add('hidden')
-			if (closeMenu) closeMenu.classList.remove('hidden')
-			if (menuList) menuList.classList.remove('hidden')
-		} else {
-			if (openMenu) openMenu.classList.remove('hidden')
-			if (closeMenu) closeMenu.classList.add('hidden')
-			if (menuList) menuList.classList.add('hidden')
-		}
+
+		if (openMenu) openMenu.classList.toggle('hidden')
+		if (closeMenu) closeMenu.classList.toggle('hidden')
+		if (menuList) menuList.classList.toggle('hidden')
 	}
 </script>
