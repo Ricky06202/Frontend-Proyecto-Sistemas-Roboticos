@@ -38,7 +38,10 @@ export default function SignInForm() {
 						Remember me
 					</label>
 				</div>
-				<Button text='Sign In' />
+				<Button
+					text='Sign In'
+					passThrough
+				/>
 				<p className='text-center text-gray-600'>
 					Already have an account?{' '}
 					<a
