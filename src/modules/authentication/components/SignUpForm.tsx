@@ -33,7 +33,10 @@ export default function SignUpForm() {
 						className='p-4 rounded-lg outline-blue-300 bg-blue-50'
 					/>
 				</div>
-				<Button text='Sign Up Now' />
+				<Button
+					text='Sign Up Now'
+					passThrough
+				/>
 				<p className='text-center text-gray-600'>
 					Already have an account?{' '}
 					<a

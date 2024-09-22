@@ -1,0 +1,52 @@
+---
+import Logo from '@components/Logo.astro'
+import { LandingPages } from '@constants/pages'
+---
+
+<footer class='flex flex-col gap-10 py-10'>
+	<div class='grid gap-8 py-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-[3fr_2fr_1fr_2fr] border-y-2'>
+		<div class='flex flex-col gap-4'>
+			<Logo />
+			<p class='text-gray-600'>
+				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat molestiae atque repellat aut culpa quidem
+				aperiam aliquam sit aliquid alias at, ipsa odio facilis id quibusdam sapiente doloremque nobis vero.
+			</p>
+		</div>
+		<div class='flex flex-col gap-4'>
+			<h3 class='py-3 text-xl font-bold'>Socials</h3>
+			<a
+				class='text-gray-600 hover:underline hover:text-blue-700'
+				href=''
+				>info@eduvision.com</a
+			>
+			<a href=''></a><a href=''></a><a href=''></a><a href=''></a>
+		</div>
+		<div class='flex flex-col gap-4'>
+			<h3 class='py-3 text-xl font-bold'>Quick Links</h3>
+			{
+				Object.values(LandingPages).map((page) => (
+					<a
+						class='text-gray-600 hover:underline hover:text-blue-700'
+						href={page.url}
+					>
+						{page.title}
+					</a>
+				))
+			}
+		</div>
+		<div class='flex flex-col gap-4'>
+			<h3 class='py-3 text-xl font-bold'>Location & Contact</h3>
+			<span class='text-gray-600'>UTP University, David, Chiriqui</span>
+			<span class='text-gray-600 hover:underline hover:text-blue-700'>+507 1234-5678</span>
+		</div>
+	</div>
+	<div class='flex flex-col items-center gap-4'>
+		<span class='text-gray-600'>
+			Designed & Developed By <a
+				class='text-blue-700 hover:underline hover:underline-offset-2'
+				href=''
+				>SmartInnovations</a
+			>
+		</span>
+	</div>
+</footer>

@@ -1,5 +1,8 @@
 ---
 import StudentLayout from '@attendance/layouts/StudentLayout.astro'
+import HistorialAsistencias from '@attendance/components/student/HistorialAsistencias.tsx'
 ---
 
-<StudentLayout> Funciona </StudentLayout>
+<StudentLayout title='Attendance'>
+	<HistorialAsistencias client:load />
+</StudentLayout>

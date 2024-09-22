@@ -1,3 +1,5 @@
+import type Professor from '@pages/attendance/professor.astro'
+
 export enum CurrentLandingPage {
 	Home,
 	About,
@@ -35,4 +37,23 @@ export const AuthPages = {
 	},
 }
 
-export const AppPages = {}
+export const AppPages = {
+	Student: {
+		Attendance: {
+			title: 'Attendance',
+			url: '/attendance/student',
+		},
+	},
+	Professor: {
+		Attendance: {
+			title: 'Attendance',
+			url: '/attendance/professor',
+		},
+	},
+	Administrator: {
+		Attendance: {
+			title: 'Attendance',
+			url: '/attendance/administrator',
+		},
+	},
+}
