@@ -1,4 +1,18 @@
-export const asistenciaMock = [
+import type { Asistencia } from './apiTypes'
+
+export const getAsistenciasMock = (): Asistencia[] =>
+	asistenciaMock.map((asistencia) => ({
+		estudiante: asistencia.nombre_estudiante,
+		codigoHorario: asistencia.codigo_hora,
+		materia: asistencia.nombre_materia,
+		dia: asistencia.dia_semana,
+		inicio: asistencia.hora_inicio,
+		fin: asistencia.hora_fin,
+		fecha: asistencia.fecha_asistencia,
+		hora: asistencia.hora_asistencia,
+		asistencia: asistencia.asistio,
+	}))
+const asistenciaMock = [
 	{
 		nombre_estudiante: 'Christopher Serrano',
 		codigo_hora: '0756',

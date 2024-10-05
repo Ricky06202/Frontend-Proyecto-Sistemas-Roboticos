@@ -1,4 +1,24 @@
-export const horarioMock = [
+import type { Estudiante } from './apiTypes'
+
+export const getEstudiantesMock = (): Estudiante[] =>
+	horarioMock.map((estudiante) => ({
+		id: estudiante.id_estudiante,
+		nombre: estudiante.nombre,
+		horario: estudiante.horario.map((horario) => ({
+			codigoHorario: horario.codigo_hora,
+			idMateria: horario.id_materia,
+			materia: horario.nombre_materia,
+			idCarrera: horario.id_carrera,
+			idFacultad: horario.id_facultad,
+			dia: horario.dia_semana,
+			inicio: horario.hora_inicio,
+			fin: horario.hora_fin,
+			salon: horario.salon,
+			profesor: horario.profesor,
+		})),
+	}))
+
+const horarioMock = [
 	{
 		id_estudiante: 11,
 		nombre: 'Christopher Serrano',
