@@ -9,7 +9,7 @@ interface StudentsState {
 
 export const useStudentsStore = create<StudentsState>()(
 	persist(
-		(set, get) => ({
+		(set) => ({
 			students: null,
 			setStudents: (students) => set({ students }),
 		}),
