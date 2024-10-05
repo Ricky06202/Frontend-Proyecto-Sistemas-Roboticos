@@ -9,7 +9,7 @@ export default function Button({ text, class: className, passThrough }: Props) {
 		<>
 			{passThrough ? (
 				<a
-					href={AppPages.Student.Attendance.url}
+					href={AppPages.Student(11).Attendance.url}
 					className={
 						'relative px-6 py-3 overflow-hidden font-bold text-white bg-blue-700 rounded-lg group text-center ' +
 						className
