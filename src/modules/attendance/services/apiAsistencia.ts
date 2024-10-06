@@ -5,7 +5,7 @@ const apiAsistencia = axios.create({
 	baseURL: 'http://asiscan.sytes.net/asistencias/asistenciasJSON',
 })
 
-export async function getAsistencias(): Promise<Asistencia[]> {
+export async function getAsistencias(): Promise<Asistencia[] | null> {
 	return apiAsistencia
 		.get('/')
 		.then((res) => res.data)
@@ -24,6 +24,6 @@ export async function getAsistencias(): Promise<Asistencia[]> {
 		)
 		.catch((err) => {
 			console.log(err)
-			return []
+			return null
 		})
 }
