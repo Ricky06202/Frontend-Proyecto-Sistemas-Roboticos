@@ -1,7 +1,13 @@
+import type { Estudiante } from '@attendance/constants/apiTypes'
+import { diasSemana } from '@attendance/constants/diasSemana'
+import type { Materia } from '@attendance/constants/materiasTypes'
 import { Icon } from '@iconify/react'
-export default function AsistenciaSimple() {
+interface Props {
+	materias: Materia[]
+}
+export default function AsistenciaSimple({ materias }: Props) {
 	return (
-		<section className='flex flex-col gap-4'>
+		<section className='flex flex-col gap-4 overflow-hidden'>
 			<header className='flex flex-col items-center gap-4'>
 				<div className='flex gap-4'>
 					<button className='focus:outline-none hover:text-blue-500'>
@@ -26,57 +32,44 @@ export default function AsistenciaSimple() {
 			</header>
 			{/* este div es una linea divisora */}
 			<div className='w-full h-px bg-gray-300'></div>
-			<div className='flex flex-col p-4 border-2 rounded-lg'>
+			<div className='flex flex-col p-4 border-2 rounded-lg overflow-auto'>
 				<table>
 					<thead>
 						<tr>
-							<th className='py-4 text-left'>Curso</th>
-							<th className='border-l'>Lunes</th>
-							<th className='border-l'>Martes</th>
-							<th className='border-l'>Miércoles</th>
-							<th className='border-l'>Jueves</th>
-							<th className='border-l'>Viernes</th>
+							<th className='py-4 text-left min-w-72'>Curso</th>
+							<th className='border-l min-w-28'>Lunes</th>
+							<th className='border-l min-w-28'>Martes</th>
+							<th className='border-l min-w-28'>Miércoles</th>
+							<th className='border-l min-w-28'>Jueves</th>
+							<th className='border-l min-w-28'>Viernes</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr className='text-2xl text-left border-t'>
-							<td className='py-6 text-lg text-left'>Calculo 1</td>
-							<td className='border-l'>
-								<Icon
-									icon='mingcute:check-2-fill'
-									mx-a
-									className='mx-auto text-green-600'
-								/>
-							</td>
-							<td className='border-l'>
-								<Icon
-									icon='mingcute:close-fill'
-									mx-a
-									className='mx-auto text-red-600'
-								/>
-							</td>
-							<td className='border-l'>
-								<Icon
-									icon='mingcute:check-2-fill'
-									mx-a
-									className='mx-auto text-green-600'
-								/>
-							</td>
-							<td className='border-l'>
-								<Icon
-									icon='mingcute:check-2-fill'
-									mx-a
-									className='mx-auto text-green-600'
-								/>
-							</td>
-							<td className='border-l'>
-								<Icon
-									icon='mingcute:close-fill'
-									mx-a
-									className='mx-auto text-red-600'
-								/>
-							</td>
-						</tr>
+						{materias.map((materia) => (
+							<tr
+								key={materia.id}
+								className='text-2xl text-left border-t'
+							>
+								<td className='py-6 text-lg '>{materia.nombre}</td>
+
+								{diasSemana.map((dia) => (
+									<td className='border-l'>
+										{materia.dias.some((d) => d.nombre === dia) &&
+											(materia.dias.find((d) => d.nombre === dia)?.asistencia.valor ? (
+												<Icon
+													icon='mingcute:check-2-fill'
+													className='mx-auto text-green-600'
+												/>
+											) : (
+												<Icon
+													icon='mingcute:close-fill'
+													className='mx-auto text-red-600'
+												/>
+											))}
+									</td>
+								))}
+							</tr>
+						))}
 					</tbody>
 				</table>
 			</div>
