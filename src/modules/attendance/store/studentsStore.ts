@@ -1,17 +1,20 @@
 import type { Estudiante } from '@attendance/constants/apiTypes'
+import { getEstudiantesMock } from '@attendance/constants/horarioMock'
 import { create } from 'zustand'
-import { persist, createJSONStorage } from 'zustand/middleware'
+import { persist } from 'zustand/middleware'
 
 interface StudentsState {
-	students: Estudiante[] | null
-	setStudents: (students: Estudiante[] | null) => void
+	students: Estudiante[] | null // Promise<Estudiante[] | null> | null
+	fetchStudents: () => void
 }
 
 export const useStudentsStore = create<StudentsState>()(
 	persist(
 		(set) => ({
 			students: null,
-			setStudents: (students) => set({ students }),
+			fetchStudents: () => {
+				set({ students: getEstudiantesMock() })
+			},
 		}),
 		{
 			name: 'students-storage',
