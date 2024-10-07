@@ -52,7 +52,7 @@ export default function AsistenciaDetallada({ materias }: Props) {
               </thead>
               <tbody>
                 {materia.dias.map((dia) => (
-                  <tr key={dia.nombre + "" + materia.id} className="border-t">
+                  <tr key={dia.nombre + materia.id} className="border-t">
                     <td className="py-6 text-lg">{materia.nombre}</td>
                     <td className="text-center border-l">
                       {dia.nombre}{" "}

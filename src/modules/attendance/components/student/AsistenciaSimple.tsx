@@ -44,7 +44,7 @@ export default function AsistenciaSimple({ materias }: Props) {
                 <td className="py-6 text-lg ">{materia.nombre}</td>
 
                 {diasSemana.map((dia) => (
-                  <td key={dia + "" + materia.id} className="border-l">
+                  <td key={dia + materia.id} className="border-l">
                     {materia.dias.some((d) => d.nombre === dia) &&
                       (materia.dias.find((d) => d.nombre === dia)?.asistencia
                         .valor ? (
