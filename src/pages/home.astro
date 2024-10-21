@@ -1,33 +1,239 @@
----
-import { LandingPages } from '@constants/pages'
-import LandingPage from '@landingPage/layout/LandingPage.astro'
-import Hero from '@landingPage/home/components/Hero.astro'
-import Features from '@landingPage/home/components/Features.astro'
-import Comments from '@landingPage/home/components/Comments.astro'
-import Benefits from '@landingPage/home/components/Benefits.astro'
-import CallToAction from '@landingPage/home/components/CallToAction.astro'
-import Servicios from '@landingPage/home/components/Servicios.astro'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <header class="header">
 
-// return Astro.redirect('/about')
----
+        <div class="menu container">
+            <a href="#" class="logo" >logo</a> 
+            <input type="checkbox" id="menu"/> 
+            <label for="menu">
+                <img src="images/menu.png" class="menu-icono" alt="">
+            </label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Servicios</a></li>
+                    <li><a href="#">Productos</a></li>
+                    <li><a href="#">login</a></li>
+                </ul> 
+            </nav>
+        </div>
 
-<LandingPage
-	title='EduVision'
-	page={LandingPages.Home}
->
-	<Hero />
-	<Features />
-	<Benefits />
-	<Servicios/>
-	<Comments />
-	
-	<CallToAction />
+        <div class="header-content container">
+            <h1>EduVision</h1>
+            <p>
+                EduVision es un software muy innovador para la asistencia estudiantil mediante reconocimiento facial.
+                Este tipo de tecnología puede hacer que el proceso de registro sea mucho más eficiente y preciso.
+                Además de reducir el tiempo que los profesores dedican a pasar lista, puede proporcionar datos en
+                tiempo real sobre la asistencia de los estudiantes, facilitando la gestión escolar.
+            </p>
+            <a href="#" class="btn-1">informacion</a>
+        </div>
+    </header>
 
 
-	
-</LandingPage>
+<section class="coffee">
 
-<style is:global>
+    <div class="coffee-content container">
+
+        <h2>las distintas funcionalidades que tiene EduVision</h2>
+        <p class="txt-p">
+            estas son algunas de las funcionalidades mas destacadas de este software 
+            para la ayuda de los estudiantes y docentes para los distintos niveles 
+            eduacativos.
+        </p>
+
+        <div class="coffee-group">
+
+            <div class="coffee-1">
+                <img src="images/ca.png" alt="">
+                <h3>Registro Automático de Asistencia</h3>
+                <p>
+                    Al ingresar a una clase o al campus, las cámaras del sistema reconocen automáticamente a los estudiantes 
+                    y registran su asistencia en tiempo real. Este proceso elimina la necesidad de tomar asistencia manualmente 
+                    y genera un registro preciso, almacenando la información en la nube o en una base de datos segura.
+                </p>
+            </div>
+            <div class="coffee-group">
+
+                <div class="coffee-1">
+                    <img src="images/ca2.png" alt="">
+                    <h3>Notificaciones Automáticas a Padres y Administradores</h3>
+                    <p>
+                        El sistema puede enviar notificaciones automáticas a los padres o tutores cuando sus hijos lleguen a la escuela o falten a clase.
+                        También podría generar alertas para el personal administrativo si se detectan patrones de inasistencia, lo que ayuda a identificar 
+                        problemas tempranamente.
+                    </p>
+                </div>
+                <div class="coffee-group">
+
+                    <div class="coffee-1">
+                        <img src="images/ca3.png" alt="">
+                        <h3>Reportes de Asistencia en Tiempo Real y Análisis de Datos</h3>
+                        <p>
+                            La plataforma puede generar reportes detallados de asistencia diaria, semanal o mensual,
+                            brindando a los administradores escolares y maestros un resumen visual y accesible. Además,
+                            se pueden aplicar análisis predictivos para detectar tendencias como absentismo crónico o identificar 
+                            grupos que podrían necesitar apoyo.
+                        </p>
+                    </div>
+              </div>
+    </div>
+
+</section>
+
+<main class="services">
+    <div class="services-content container">
+        <h2>servicios del software</h2>
+        <div class="services-group">
+
+            <div class="services-1">
+                <img src="images/logo1.png" alt="">
+                <h3>notificaciones en tiempo real</h3>
+            </div>
+            <div class="services-1">
+                <img src="images/logo2.png" alt="">
+                <h3>Verificación de Identidad y Control de Acceso</h3>
+            </div>
+            <div class="services-1">
+                <img src="images/logo3.png" alt="">
+                <h3>Integración con Sistemas de Gestión Escolar</h3>
+            </div>
+
+        </div>
+        <p>
+            Estos servicios hacen que el software no solo sea útil para la gestión de asistencia,
+            sino también una herramienta integral para mejorar la operación y la seguridad dentro 
+            del entorno eduacativo. 
+        </p>
+        <a href="#" class="btn-1">informacion</a>
+    </div>
+</main>
+
+
+
+<section class="general">
+
+    <div class="general-1">
+        <h2>Soporte Técnico</h2>
+        <p>
+            EduVision puede ofrecer soporte técnico continuo, incluyendo actualizaciones de software, 
+            mantenimiento de hardware y resolución de problemas. Este servicio asegura que el sistema 
+            funcione sin interrupciones y siempre esté optimizado.
+        </p>
+        <a href="#" class="btn-1">informacion</a>
+    </div>
+    <div class="general-2"></div>
+
+</section>
+
+
+<section class="general">
+    <div class="general-3"></div>
+    <div class="general-1">
+        <h2>Privacidad y Seguridad</h2>
+        <p>
+            Dado que el reconocimiento facial involucra datos biométricos, EduVision ofrece servicios que aseguran
+            el cumplimiento de normativas de privacidad incluyendo encriptación de datos, gestión de
+            consentimiento y control de acceso a la información.
+        </p>
+        <a href="#" class="btn-1">informacion</a>
+    </div>
+</section>
+
+<section class="blog container">
+    <h2>blog</h2>
+
+    <div class="blog-content">
+        <div class="blog-1">
+            <img src="images/blog4.jpg" alt="">
+            <h3>blog 1</h3>
+            <p>
+                "Cámaras de Reconocimiento Facial: ¡Adiós a las Listas de Asistencia!"
+                Hoy les quiero contar cómo las cámaras de reconocimiento facial están transformando 
+                la manera en que se toma la asistencia en las escuelas. Con esta tecnología,
+                los estudiantes ya no necesitan marcar su presencia manualmente.
+                Al ingresar al aula, la cámara los identifica automáticamente,
+                ahorrando tiempo y mejorando la precisión. ¡Es como traer un toque del futuro 
+                al día a día escolar!
+            </p>
+        </div>
+        <div class="blog-1">
+            <img src="images/blog5.jpg" alt="">
+            <h3>blog 2</h3>
+            <p>
+                "¿El Futuro de la Asistencia? Cámaras de Reconocimiento Facial"
+                ¿Qué tan increíble sería que los maestros no tuvieran que pasar lista? Pues, 
+                con las cámaras de reconocimiento facial, eso es posible. Este sistema reconoce 
+                a los estudiantes al entrar al salón y registra su asistencia en segundos.
+                Aunque algunos puedan preocuparse por la privacidad, los beneficios en términos 
+                de ahorro de tiempo y exactitud son claros. ¡La tecnología está cambiando 
+                la educación!
+            </p>
+        </div>
+        <div class="blog-1">
+            <img src="images/blog6.jpg" alt="">
+            <h3>blog 3</h3>
+            <p>
+                "Reconocimiento Facial para la Asistencia: ¿Vale la Pena?"
+                Hoy hablamos de las cámaras de reconocimiento facial para tomar
+                asistencia en las escuelas. Este avance tecnológico promete rapidez
+                y precisión, permitiendo que los estudiantes sean registrados al 
+                instante. Sin embargo, también plantea preguntas sobre la privacidad
+                y el manejo de datos personales. ¿Es este el futuro que queremos en
+                nuestras aulas? ¡Dime qué opinas!
+            </p>
+        </div>
+    </div>
+    <a href="#" class="btn-1">informacion</a>
+</section>
+
+<footer class="footer">
+    <div class="footer-content container">
+        <div class="link">
+            <h3>nosotros</h3>
+            <ul>
+                <li><a href="#">nuestros servicios</a></li>
+                <li><a href="#">nuesta historia</a></li>
+                <li><a href="#">politica de privacidad</a></li>
+            </ul>
+        </div>
+            <div class="link">
+                <h3>soporte y ayuda</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">soporte tecnico 24/7 (+507 6767-6565)</a></li>
+                </ul>
+            </div>
+                <div class="link">
+                    <h3>blog</h3>
+                    <ul>
+                        <li><a href="#">nuesto blog</a></li>
+                        <li><a href="#">danos tu opinion!</a></li>
+                    </ul>
+            </div>
+                <div class="link">
+                    <h3>Redes Sociales</h3>
+                    <ul>
+                        <li><a href="#">linkedin</a></li>
+                        <li><a href="#">instagram</a></li>
+                        <li><a href="#">facebook</a></li>
+                        <li><a href="#">x</a></li>
+                    </ul>
+                </div>
+             </div>
+         </footer>
+</body>
+</html>
+
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;600;700;800&display=swap');
 
 *{
@@ -437,5 +643,3 @@ p {
         text-align: center;
     }
 }
-	
-</style>
