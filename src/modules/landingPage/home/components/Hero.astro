@@ -1,0 +1,18 @@
+---
+import Button from '@components/Button.astro'
+import { AuthPages } from '@constants/pages'
+---
+
+<div class='flex flex-col items-center gap-8'>
+	<h2 class='text-5xl'>EduVision</h2>
+	<p class='text-center'>
+		EduVision es un software muy innovador para la asistencia estudiantil mediante reconocimiento facial. Este tipo de
+		tecnología puede hacer que el proceso de registro sea mucho más eficiente y preciso. Además de reducir el tiempo que
+		los profesores dedican a pasar lista, puede proporcionar datos en tiempo real sobre la asistencia de los
+		estudiantes, facilitando la gestión escolar.
+	</p>
+	<Button
+		text='Get Started'
+		href={AuthPages.SignUp.url}
+	/>
+</div>

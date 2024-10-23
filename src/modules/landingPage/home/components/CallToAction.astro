@@ -1,0 +1,11 @@
+---
+import Button from '@components/Button.astro'
+import { AuthPages } from '@constants/pages'
+---
+
+<section class='flex flex-col items-center'>
+	<Button
+		text='Get Started'
+		href={AuthPages.SignUp.url}
+	/>
+</section>
