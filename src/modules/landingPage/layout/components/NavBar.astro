@@ -14,18 +14,22 @@ interface Props {
 const { currentPage } = Astro.props;
 
 const isActive = (page: typeof LandingPages.Home): string => {
-  return currentPage.title === page.title ? " text-blue-700" : "";
+  return currentPage.title === page.title
+    ? " text-blue-700 dark:text-blue-300"
+    : "";
 };
 ---
 
-<nav class="flex flex-wrap items-center justify-between py-8 text-md">
+<nav
+  class="flex flex-wrap items-center justify-between py-8 text-md dark:bg-gray-500"
+>
   <Logo />
   <input hidden type="checkbox" id="menu" />
   <div class="lg:hidden flex justify-center items-center">
     <DarkMode client:load />
     <label
       for="menu"
-      class="p-5 lg:hidden text-4xl cursor-pointer hover:text-blue-500"
+      class="p-5 lg:hidden text-4xl cursor-pointer hover:text-blue-500 dark:text-white dark:hover:text-blue-500"
     >
       <Icon name="mingcute:menu-line" id="openMenu" />
       <Icon name="mingcute:close-square-line" id="closeMenu" class="hidden" />
@@ -33,14 +37,14 @@ const isActive = (page: typeof LandingPages.Home): string => {
   </div>
   <ul
     id="menuList"
-    class="flex flex-col flex-wrap items-center hidden w-full gap-2 lg:block lg:flex-row lg:space-x-2 lg:w-auto"
+    class="flex flex-col flex-wrap text-xl items-center hidden w-full gap-2 lg:block lg:flex-row lg:space-x-2 lg:w-auto dark:text-white"
   >
     {
       Object.values(LandingPages).map((page) => (
         <a
           href={page.url}
           class={
-            "p-4 transition duration-150 cursor-pointer hover:text-blue-700" +
+            "p-4 transition duration-150 cursor-pointer hover:text-blue-700 dark:hover:text-blue-300" +
             isActive(page)
           }
         >
@@ -50,7 +54,7 @@ const isActive = (page: typeof LandingPages.Home): string => {
     }
     <Button text="Sign Up Now" href={AuthPages.SignUp.url} class="lg:hidden" />
   </ul>
-  <div class="hidden lg:flex justify-center items-center gap-8">
+  <div class="hidden lg:flex justify-center items-center gap-8 mr-4">
     <DarkMode client:load />
     <Button text="Sign Up Now" href={AuthPages.SignUp.url} />
   </div>

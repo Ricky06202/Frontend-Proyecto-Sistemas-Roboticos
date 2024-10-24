@@ -4,6 +4,16 @@ export default {
 	darkMode: 'class',
 	theme: {
 		extend: {
+			colors: {
+				primary: {
+					light: 'dark',
+					dark: 'white',
+				},
+				secondary: {
+					light: 'white',
+					dark: 'dark',
+				},
+			},
 			listStyleType: {
 				none: 'none',
 				disc: 'disc',
