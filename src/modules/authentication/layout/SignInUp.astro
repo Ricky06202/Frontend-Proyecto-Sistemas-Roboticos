@@ -33,8 +33,10 @@ const { title } = Astro.props
 		<title>{title}</title>
 	</head>
 
-	<body class='flex flex-col items-center'>
-		<div class='grid sm:max-w-[640px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] py-10 lg:grid-cols-2 gap-36'>
+	<body class='flex flex-col items-center justify-center'>
+		<div
+			class='grid justify-center items-center sm:max-w-[640px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] py-10 lg:grid-cols-2 gap-36'
+		>
 			<Welcome />
 			<slot />
 		</div>

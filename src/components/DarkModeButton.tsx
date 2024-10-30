@@ -2,7 +2,7 @@ import { useDarkMode } from 'src/hooks/useDarkMode'
 import DarkIcon from './icons/DarkIcon'
 import LightIcon from './icons/LightIcon'
 
-const ThemeToggleButton = () => {
+const DarkModeButton = () => {
 	const { isDarkMode, toggleTheme } = useDarkMode()
 
 	return (
@@ -19,4 +19,4 @@ const ThemeToggleButton = () => {
 	)
 }
 
-export default ThemeToggleButton
+export default DarkModeButton
