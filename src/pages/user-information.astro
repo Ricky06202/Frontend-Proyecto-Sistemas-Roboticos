@@ -1,0 +1,26 @@
+---
+import { LandingPages } from "@constants/pages";
+import LandingPage from "@landingPage/layout/LandingPage.astro";
+import BasicProfile from "@landingPage/userinformation/BasicProfile.astro";
+import PersonalInformation from "@landingPage/userinformation/PersonalInformation.astro";
+import MateriasInformation from "@landingPage/userinformation/MateriasInformation.astro";
+---
+
+<LandingPage title="EduVision" page={LandingPages.Home}>
+  <h1 class="text-5xl font-extrabold dark:text-white">Mi Perfil</h1>
+  <BasicProfile
+    user="UsuarioX1"
+    email="usuario@correo.com"
+    name="Azner"
+    lastname="Aparicio"
+  />
+  <PersonalInformation
+    name="Azner"
+    lastname="Aparicio"
+    email="usuario@correo.com"
+    faculty="Facultad de Ingeniería de Sistemas Computacionales"
+    career="Licenciatura en Ingeniería de Sistemas de Información"
+    user_type="Estudiante"
+  />
+  <MateriasInformation />
+</LandingPage>

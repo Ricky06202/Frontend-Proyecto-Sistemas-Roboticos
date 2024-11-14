@@ -1,0 +1,52 @@
+---
+import type { string } from "astro:schema";
+
+interface Props {
+  class?: string;
+  name: string;
+  lastname: string;
+  email: string;
+  faculty: string;
+  career: string;
+  user_type: string;
+}
+const {
+  name,
+  lastname,
+  email,
+  faculty,
+  career,
+  user_type,
+  class: className,
+} = Astro.props;
+---
+
+<div
+  class="flex flex-col rounded-xl border border-black/10 dark:border-white/30 dark:text-white shadow-md p-5 justify-start gap-4"
+>
+  <h2 class="text-4xl font-semibold mb-10">Información Personal</h2>
+  <div class="grid grid-cols-2">
+    <div class="space-y-8">
+      <h1 class="flex flex-col text-2xl">
+        Nombre: <a class="text-lg opacity-60">{name}</a>
+      </h1>
+      <h1 class="flex flex-col text-2xl">
+        Email: <a class="text-lg opacity-60">{email}</a>
+      </h1>
+      <h1 class="flex flex-col text-2xl">
+        Facultad: <a class="text-lg opacity-60">{faculty}</a>
+      </h1>
+    </div>
+    <div class="space-y-8">
+      <h1 class="flex flex-col text-2xl">
+        Apellido: <a class="text-lg opacity-60">{lastname}</a>
+      </h1>
+      <h1 class="flex flex-col text-2xl">
+        Tipo de Usuario: <a class="text-lg opacity-60">{user_type}</a>
+      </h1>
+      <h1 class="flex flex-col text-2xl">
+        Carrera: <a class="text-lg opacity-60">{career}</a>
+      </h1>
+    </div>
+  </div>
+</div>

@@ -55,3 +55,14 @@ export const AppPages = {
 		},
 	},
 }
+
+export const UserPages = {
+	UserInformation: {
+		title: 'User Information',
+		url: '/user-information',
+	},
+	Setting: {
+		title: 'Settings',
+		url: '/settings',
+	}
+}

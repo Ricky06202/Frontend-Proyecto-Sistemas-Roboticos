@@ -1,0 +1,21 @@
+---
+interface Props {
+  class?: string;
+  user: string;
+  name: string;
+  lastname: string;
+  email: string;
+}
+const { user, name, lastname, email, class: className } = Astro.props;
+---
+
+<div
+  class="grid grid-flow-col rounded-xl border border-black/10 dark:border-white/30 shadow-md p-5 justify-start gap-4"
+>
+  <img src="/images/account-circle.png" alt="" class="w-24" />
+  <div class="flex flex-col text-xl dark:text-white space-y-2">
+    <a class="font-semibold">{name} {lastname}</a>
+    <a class="">{user}</a>
+    <a class="">{email}</a>
+  </div>
+</div>
