@@ -57,12 +57,8 @@ export const AppPages = {
 }
 
 export const UserPages = {
-	UserInformation: {
-		title: 'User Information',
-		url: '/user-information',
+	Profile: {
+		title: 'Profile',
+		url: '/profile',
 	},
-	Setting: {
-		title: 'Settings',
-		url: '/settings',
-	}
 }

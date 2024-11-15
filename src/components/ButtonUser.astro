@@ -30,24 +30,6 @@ const { user, email, class: className } = Astro.props;
           </h3>
         </div>
         <div class="flex flex-col p-2 text-center text-xl">
-          <!-- <a href="#">
-            <span
-              class="relative p-2 py-4 z-10 block hover:bg-gray-100 dark:hover:bg-gray-500"
-              >Perfil de Usuario</span
-            >
-          </a>
-          <a href="#">
-            <span
-              class="relative p-2 py-4 z-10 block hover:bg-gray-100 dark:hover:bg-gray-500"
-              >Configuraciones</span
-            >
-          </a>
-          <a href="#">
-            <span
-              class="relative p-2 py-4 z-10 block hover:bg-gray-100 dark:hover:bg-gray-500"
-              >Cerrar Sesión</span
-            >
-          </a> -->
           {
             Object.values(UserPages).map((page) => (
               <a

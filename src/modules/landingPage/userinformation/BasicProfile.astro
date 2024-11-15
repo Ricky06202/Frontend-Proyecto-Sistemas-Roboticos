@@ -10,12 +10,20 @@ const { user, name, lastname, email, class: className } = Astro.props;
 ---
 
 <div
-  class="grid grid-flow-col rounded-xl border border-black/10 dark:border-white/30 shadow-md p-5 justify-start gap-4"
+  class="grid grid-cols-2 rounded-xl border border-black/10 dark:bg-gray-500 dark:border-white/30 shadow-md p-5 justify-start gap-4"
 >
-  <img src="/images/account-circle.png" alt="" class="w-24" />
-  <div class="flex flex-col text-xl dark:text-white space-y-2">
-    <a class="font-semibold">{name} {lastname}</a>
-    <a class="">{user}</a>
-    <a class="">{email}</a>
+  <div>
+    <img src="/images/account-circle.png" alt="" class="w-24" />
+    <div class="flex flex-col text-xl dark:text-white space-y-2">
+      <a class="font-semibold">{name} {lastname}</a>
+      <a class="">{user}</a>
+      <a class="">{email}</a>
+    </div>
+  </div>
+  <div class="place-items-end justify-end opacity-80">
+    <button
+      class="flex flex-row w-24 h-8 p-6 border justify-center items-center text-xl border-black/10 hover:bg-gray-300 dark:text-white dark:bg-gray-500 dark:border-white/30 dark:hover:bg-cyan-300 shadow-lg"
+      ><img src="/images/edit.png" class="w-8" /> Editar</button
+    >
   </div>
 </div>
