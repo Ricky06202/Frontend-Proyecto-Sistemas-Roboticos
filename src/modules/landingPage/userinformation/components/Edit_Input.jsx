@@ -3,25 +3,35 @@ import { Edit } from "@landingPage/userinformation/iconos/Edit";
 import { Cancel } from "@landingPage/userinformation/iconos/Cancel";
 import { Save } from "@landingPage/userinformation/iconos/Save";
 
-export default function Edit_Input() {
+export default function Edit_Input({ text }) {
   const [isHidden, setIsHidden] = useState(false);
 
   return (
-    <div class="grid grid-flow-col gap-4">
-      <button onClick={() => setIsHidden(true)}>
-        <Edit />
-      </button>
+    <div class="grid grid-flow-col items-center content-center">
       <div
-        class={` ${isHidden ? "block" : "hidden"} flex gap-2 content-center items-center`}
+        class={` ${isHidden ? "hidden" : "Block"} flex gap-8 items-center content-center`}
       >
-        <button onClick={() => setIsHidden(false)}>
-          <Cancel />
+        <h3>{text}</h3>
+        <button onClick={() => setIsHidden(true)}>
+          <Edit />
         </button>
+      </div>
+      <div
+        class={` ${isHidden ? "block" : "hidden"} flex gap-4 content-center items-center`}
+      >
         <input
           type="text"
+          placeholder={text}
           class="border border-black dark:bg-gray-500 dark:border-slate-100"
         />
-        <Save />
+        <div className="flex gap-4 mt-2">
+          <button onClick={() => setIsHidden(false)}>
+            <Cancel />
+          </button>
+          <button>
+            <Save />
+          </button>
+        </div>
       </div>
     </div>
   );

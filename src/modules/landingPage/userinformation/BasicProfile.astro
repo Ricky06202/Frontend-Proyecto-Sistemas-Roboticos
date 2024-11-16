@@ -13,7 +13,7 @@ const { user, name, lastname, email, class: className } = Astro.props;
 ---
 
 <div
-  class="grid grid-cols-2 rounded-xl bg-component border border-black/10 dark:bg-component-dark dark:border-white/30 shadow-md p-5 justify-start gap-4"
+  class="grid grid-cols-1 rounded-xl bg-component border border-black/10 dark:bg-component-dark dark:border-white/30 shadow-md p-5 justify-start gap-4"
 >
   <div>
     <AccountCircle />
@@ -23,18 +23,18 @@ const { user, name, lastname, email, class: className } = Astro.props;
       class="w-24 fill-current dark:fill-white"
     />
     <div class="flex flex-col text-xl dark:text-white space-y-2">
-      <a class="flex font-semibold gap-4 items-center"
-        >{name}
-        {lastname}
+      <a class="flex font-semibold gap-10 items-center"
+        >Nombre de Usuario:<h3>{name} {lastname}</h3>
       </a>
 
-      <a class="flex font-semibold gap-4 items-center"
-        >{user}
-        <Edit_Input client:load />
+      <a class="flex font-semibold gap-40 items-center">
+        Usuario:
+        <h3><Edit_Input text={user} .string client:load /></h3>
       </a>
-      <a class="flex font-semibold gap-4 items-center"
-        >{email}
-        <Edit_Input client:load />
+      <a class="flex font-semibold gap-12 items-center">
+        Correo Electrónico:
+
+        <h3><Edit_Input text={email} client:load /></h3>
       </a>
     </div>
   </div>
