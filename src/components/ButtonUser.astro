@@ -1,5 +1,6 @@
 ---
 import { LandingPages, UserPages } from "@constants/pages";
+import { AccountCircle } from "@landingPage/userinformation/iconos/Account";
 
 interface Props {
   class?: string;
@@ -14,7 +15,7 @@ const { user, email, class: className } = Astro.props;
     <button
       class={"relative px-5 py-3 text-3xl rounded-lg group text-black dark:text-white dark:bg-gray-50" +
         className}
-      ><img src="/images/account-circle.png" alt="" class="w-20" />
+      ><AccountCircle />
 
       <div
         class="absolute w-80 mt-1 top-full right-0 rounded-lg text-left bg-white text-gray-700 dark:bg-black dark:text-white pt-1 shadow-md scale-y-0 group-focus:scale-y-100 origin-top duration-200"

@@ -1,5 +1,7 @@
 ---
 import type { string } from "astro:schema";
+// import Edit_Input from "@landingPage/userinformation/components/Edit_Input";
+import Personal_Edit from "@landingPage/userinformation/components/Personal_Edit";
 
 interface Props {
   class?: string;
@@ -26,35 +28,13 @@ const {
 >
   <div class="">
     <h2 class="text-4xl font-semibold mb-10">Información Personal</h2>
-    <div class="grid grid-cols-2">
-      <div class="space-y-8">
-        <h1 class="flex flex-col text-2xl">
-          Nombre: <a class="text-lg opacity-60">{name}</a>
-        </h1>
-        <h1 class="flex flex-col text-2xl">
-          Email: <a class="text-lg opacity-60">{email}</a>
-        </h1>
-        <h1 class="flex flex-col text-2xl">
-          Facultad: <a class="text-lg opacity-60">{faculty}</a>
-        </h1>
-      </div>
-      <div class="space-y-8">
-        <h1 class="flex flex-col text-2xl">
-          Apellido: <a class="text-lg opacity-60">{lastname}</a>
-        </h1>
-        <h1 class="flex flex-col text-2xl">
-          Tipo de Usuario: <a class="text-lg opacity-60">{user_type}</a>
-        </h1>
-        <h1 class="flex flex-col text-2xl">
-          Carrera: <a class="text-lg opacity-60">{career}</a>
-        </h1>
-      </div>
+    <div class="grid grid-cols-1 gap-8">
+      <Personal_Edit field="Nombre:" data={name} client:load />
+      <Personal_Edit field="Apellido:" data={lastname} client:load />
+      <Personal_Edit field="Email:" data={email} client:load />
+      <Personal_Edit field="Tipo de Usuario:" data={user_type} client:load />
+      <Personal_Edit field="Facultad:" data={faculty} client:load />
+      <Personal_Edit field="Carrera:" data={career} client:load />
     </div>
-  </div>
-  <div class="place-items-end justify-end opacity-80 w-1/3">
-    <button
-      class="flex flex-row w-24 h-8 p-6 border justify-center items-center text-xl border-black/10 hover:bg-gray-300 dark:text-white dark:bg-gray-500 dark:border-white/30 dark:hover:bg-cyan-300 shadow-lg dark:shadow-cyan-700"
-      ><img src="/images/edit.png" class="w-8" /> Editar</button
-    >
   </div>
 </div>

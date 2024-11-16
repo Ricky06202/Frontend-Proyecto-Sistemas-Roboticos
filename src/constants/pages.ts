@@ -59,6 +59,6 @@ export const AppPages = {
 export const UserPages = {
 	Profile: {
 		title: 'Profile',
-		url: '/profile',
+		url: '/account/profile',
 	},
 }
