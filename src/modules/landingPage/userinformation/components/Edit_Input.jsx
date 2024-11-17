@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Edit } from "@landingPage/userinformation/iconos/Edit";
 import { Cancel } from "@landingPage/userinformation/iconos/Cancel";
 import { Save } from "@landingPage/userinformation/iconos/Save";
@@ -6,10 +6,14 @@ import useEdit from "@landingPage/userinformation/components/storeEdit";
 
 export default function Edit_Input({ id, text }) {
   const [isHidden, setIsHidden] = useState(false);
-  const { editShow, editComponentId, setId, editChange } = useEdit();
+  const { editComponentId, setId } = useEdit();
+  const inputRef = useRef(null);
 
   useEffect(() => {
     setIsHidden(editComponentId === id);
+    if (editComponentId === id) {
+      inputRef.current.focus();
+    }
   }, [editComponentId, id]);
 
   const showClick = () => {
@@ -36,6 +40,7 @@ export default function Edit_Input({ id, text }) {
         <div className="flex gap-4 content-center items-center">
           <input
             type="text"
+            ref={inputRef}
             defaultValue={text}
             className="p-1 border border-black dark:bg-background-dark dark:border-slate-100"
           />
