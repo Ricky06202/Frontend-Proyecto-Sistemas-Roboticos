@@ -8,7 +8,8 @@
 			"@pages/*": ["src/pages/*"],
 			"@attendance/*": ["src/modules/attendance/*"],
 			"@authentication/*": ["src/modules/authentication/*"],
-			"@landingPage/*": ["src/modules/landingPage/*"]
+			"@landingPage/*": ["src/modules/landingPage/*"],
+			"@userinformation/*": ["src/modules/userinformation/*"]
 		},
 		"jsx": "react-jsx",
 		"jsxImportSource": "react"
