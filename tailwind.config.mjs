@@ -13,6 +13,9 @@ export default {
 					light: 'white',
 					dark: 'dark',
 				},
+				'background-dark': '#6B7280',
+				'component': '#F1F5F9',
+				'component-dark': '#334155',
 			},
 			listStyleType: {
 				none: 'none',

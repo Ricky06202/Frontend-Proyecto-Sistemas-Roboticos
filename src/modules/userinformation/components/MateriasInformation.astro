@@ -1,0 +1,30 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<div
+  class="grid grid-row rounded-xl bg-component border border-black/10 dark:bg-component-dark dark:border-white/30 dark:text-white shadow-md p-5 justify-start gap-4"
+>
+  <h2 class="text-4xl font-semibold mb-10">Asistencias Activas</h2>
+  <div class="grid grid-cols-2">
+    <div class="space-y-10">
+      <h2 class="text-2xl font-semibold">Cursos:</h2>
+      <div class="space-y-8 opacity-60">
+        <a class="flex flex-col text-2xl">Materia 1</a>
+        <a class="flex flex-col text-2xl">Materia 2</a>
+        <a class="flex flex-col text-2xl">Materia 3</a>
+      </div>
+    </div>
+    <div class="space-y-10">
+      <h2 class="text-2xl font-semibold">Última asistencia:</h2>
+      <div class="space-y-8 opacity-60">
+        <a class="flex flex-col text-2xl">12-13-2024 10:15:00</a>
+        <a class="flex flex-col text-2xl">12-13-2024 10:15:00</a>
+        <a class="flex flex-col text-2xl">12-13-2024 10:15:00</a>
+      </div>
+    </div>
+  </div>
+</div>

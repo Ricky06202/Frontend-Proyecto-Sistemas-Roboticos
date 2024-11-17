@@ -1,0 +1,44 @@
+---
+import Personal_Edit from '@userinformation/components/Personal_Edit'
+
+interface Props {
+	class?: string
+	name: string
+	lastname: string
+	email: string
+	faculty: string
+	career: string
+	user_type: string
+}
+const { name, lastname, email, faculty, career, user_type, class: className } = Astro.props
+
+const components = [
+	{ idComponent: '3', field: 'Nombre:', data: name },
+	{ idComponent: '4', field: 'Apellido:', data: lastname },
+	{ idComponent: '5', field: 'Email:', data: email },
+	{ idComponent: '6', field: 'Tipo de Usuario:', data: user_type },
+	{ idComponent: '7', field: 'Facultad:', data: faculty },
+	{ idComponent: '8', field: 'Carrera:', data: career },
+]
+---
+
+<div
+	class='flex rounded-xl bg-component border border-black/10 dark:bg-component-dark dark:border-white/30 dark:text-white shadow-md p-5 justify-start gap-4'
+>
+	<div class=''>
+		<h2 class='text-4xl font-semibold mb-10'>Información Personal</h2>
+		<div class='grid grid-cols-1 gap-8'>
+			{
+				components.map((component, index) => (
+					<Personal_Edit
+						key={index}
+						idComponent={component.idComponent}
+						field={component.field}
+						data={component.data}
+						client:load
+					/>
+				))
+			}
+		</div>
+	</div>
+</div>

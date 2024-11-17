@@ -55,3 +55,10 @@ export const AppPages = {
 		},
 	},
 }
+
+export const UserPages = {
+	Profile: {
+		title: 'Profile',
+		url: '/account/profile',
+	},
+}
