@@ -4,7 +4,7 @@ import type { SVGProps } from 'react'
 export function AccountCircle(props: SVGProps<SVGSVGElement>) {
 	return (
 		<svg
-			className='w-24 fill-current dark:fill-white dark:bg-background-dark dark:rounded-full'
+			className='w-24 fill-current dark:fill-white'
 			xmlns='http://www.w3.org/2000/svg'
 			viewBox='0 0 24 24'
 			{...props}
