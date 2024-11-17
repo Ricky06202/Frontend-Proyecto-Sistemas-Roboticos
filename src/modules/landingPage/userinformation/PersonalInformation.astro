@@ -1,6 +1,6 @@
 ---
+import { useState } from "react";
 import type { string } from "astro:schema";
-// import Edit_Input from "@landingPage/userinformation/components/Edit_Input";
 import Personal_Edit from "@landingPage/userinformation/components/Personal_Edit";
 
 interface Props {
@@ -21,6 +21,15 @@ const {
   user_type,
   class: className,
 } = Astro.props;
+
+const components = [
+  { idComponent: "3", field: "Nombre:", data: name },
+  { idComponent: "4", field: "Apellido:", data: lastname },
+  { idComponent: "5", field: "Email:", data: email },
+  { idComponent: "6", field: "Tipo de Usuario:", data: user_type },
+  { idComponent: "7", field: "Facultad:", data: faculty },
+  { idComponent: "8", field: "Carrera:", data: career },
+];
 ---
 
 <div
@@ -29,12 +38,17 @@ const {
   <div class="">
     <h2 class="text-4xl font-semibold mb-10">Información Personal</h2>
     <div class="grid grid-cols-1 gap-8">
-      <Personal_Edit field="Nombre:" data={name} client:load />
-      <Personal_Edit field="Apellido:" data={lastname} client:load />
-      <Personal_Edit field="Email:" data={email} client:load />
-      <Personal_Edit field="Tipo de Usuario:" data={user_type} client:load />
-      <Personal_Edit field="Facultad:" data={faculty} client:load />
-      <Personal_Edit field="Carrera:" data={career} client:load />
+      {
+        components.map((component, index) => (
+          <Personal_Edit
+            key={index}
+            idComponent={component.idComponent}
+            field={component.field}
+            data={component.data}
+            client:load
+          />
+        ))
+      }
     </div>
   </div>
 </div>

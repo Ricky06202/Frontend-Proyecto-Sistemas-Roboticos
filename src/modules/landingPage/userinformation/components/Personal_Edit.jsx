@@ -1,12 +1,18 @@
 import Edit_Input from "@landingPage/userinformation/components/Edit_Input";
 
-export default function Personal_Edit({ field, data }) {
+export default function Personal_Edit({
+  idComponent,
+  field,
+  data,
+  showClickFunction,
+  hiddenClickFunction,
+}) {
   return (
-    <div class="flex gap-10">
-      <h1 class="flex flex-col text-2xl">
+    <div className="flex gap-10">
+      <h1 className="flex flex-col text-2xl">
         {field}{" "}
-        <a class="text-lg opacity-60">
-          <Edit_Input text={data} />
+        <a className="text-lg ">
+          <Edit_Input id={idComponent} text={data} />
         </a>
       </h1>
     </div>
