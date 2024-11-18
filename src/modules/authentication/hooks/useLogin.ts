@@ -9,12 +9,16 @@ export const useLogin = (username: string, password: string) => {
 
 	const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
-		login(username, password).then((response) => {
-			setUser(toUser(response))
-			setToken(response.token)
-			console.log(response)
-			window.location.href = AppPages.Student(response.id).Attendance.url
-		})
+		login(username, password)
+			.then((response) => {
+				setUser(toUser(response))
+				setToken(response.token)
+				console.log(response)
+				window.location.href = AppPages.Student(response.id).Attendance.url
+			})
+			.catch((error) => {
+				alert(error)
+			})
 	}
 
 	return { handleLogin }

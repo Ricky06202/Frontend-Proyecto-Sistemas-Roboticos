@@ -10,12 +10,16 @@ export const useRegister = (user: RegisterUser) => {
 
 	const handleRegister = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
-		register(user).then((response) => {
-			setUser(toUser(response))
-			setToken(response.token)
-			console.log(response)
-			window.location.href = AppPages.Student(response.id).Attendance.url
-		})
+		register(user)
+			.then((response) => {
+				setUser(toUser(response))
+				setToken(response.token)
+				console.log(response)
+				window.location.href = AppPages.Student(response.id).Attendance.url
+			})
+			.catch((error) => {
+				alert(error)
+			})
 	}
 
 	return { handleRegister }
