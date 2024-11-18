@@ -10,15 +10,14 @@ export default function SignInForm() {
 
 	return (
 		<main className='flex flex-col items-center justify-center gap-16'>
-			<div className='flex flex-col items-center gap-4'>
-				<h1 className='text-4xl font-bold'>Sign In</h1>
-				<div className='w-16 h-1 bg-blue-500 rounded-lg' />
-			</div>
-
 			<form
-				className='grid gap-8 w-96'
+				className='grid gap-8 w-72 lg:w-96'
 				onSubmit={handleLogin}
 			>
+				<div className='flex flex-col items-center gap-4'>
+					<h1 className='text-4xl font-bold'>Sign In</h1>
+					<div className='w-16 h-1 bg-blue-500 rounded-lg' />
+				</div>
 				<div className='grid items-center'>
 					<label className='pb-2 text-gray-600'>Usuario</label>
 					<input
