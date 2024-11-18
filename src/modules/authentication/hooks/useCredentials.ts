@@ -1,4 +1,4 @@
-import { useTokenStore } from '@authentication/stores/tokenStore'
+import { useAccountStore } from '@authentication/stores/accountStore'
 import { useState } from 'react'
 
 export const useCredentials = () => {
@@ -6,8 +6,8 @@ export const useCredentials = () => {
 		username: '',
 		password: '',
 	})
-	const toggleRememberMe = useTokenStore((state) => state.toggleRememberMe)
-	const rememberMe = useTokenStore((state) => state.rememberMe)
+	const toggleRememberMe = useAccountStore((state) => state.toggleRememberMe)
+	const rememberMe = useAccountStore((state) => state.rememberMe)
 
 	const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setCredentials({ ...credentials, username: event.target.value })
