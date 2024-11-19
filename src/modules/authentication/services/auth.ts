@@ -3,9 +3,6 @@ import axios from 'axios'
 
 const apiAuth = axios.create({
 	baseURL: 'http://asiscan.sytes.net/users/api/',
-	headers: {
-		referrerPolicy: 'unsafe-url',
-	},
 })
 
 export function login(user: string, password: string): Promise<ApiUser> {
