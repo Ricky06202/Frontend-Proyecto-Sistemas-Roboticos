@@ -1,11 +1,12 @@
 import type { Estudiante } from '@attendance/constants/apiTypes'
 import axios from 'axios'
+import { APIBaseUrl } from 'src/env'
 
 const apiHorario = axios.create({
-	baseURL: 'http://asiscan.sytes.net/horario/estudiantesJSON',
+	baseURL: APIBaseUrl + 'horario/estudiantesJSON',
 })
 
-export async function getEstudiantes(): Promise<Estudiante[] | null> {
+export async function getEstudiantes(): Promise<Estudiante[]> {
 	return apiHorario
 		.get('/')
 		.then((res) => res.data)
@@ -27,13 +28,9 @@ export async function getEstudiantes(): Promise<Estudiante[] | null> {
 				})),
 			}))
 		)
-		.catch((err) => {
-			console.log(err)
-			return null
-		})
 }
 
-export async function getEstudiante(id: number): Promise<Estudiante | null> {
+export async function getEstudiante(id: number): Promise<Estudiante> {
 	return apiHorario
 		.get(`/${id}`)
 		.then((res) => res.data)
@@ -53,8 +50,4 @@ export async function getEstudiante(id: number): Promise<Estudiante | null> {
 				profesor: horario.profesor,
 			})),
 		}))
-		.catch((err) => {
-			console.log(err)
-			return null
-		})
 }
