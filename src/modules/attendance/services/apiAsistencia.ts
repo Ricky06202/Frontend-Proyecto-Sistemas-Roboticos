@@ -1,11 +1,12 @@
 import type { Asistencia } from '@attendance/constants/apiTypes'
 import axios from 'axios'
+import { APIBaseUrl } from 'src/env'
 
 const apiAsistencia = axios.create({
-	baseURL: 'http://asiscan.sytes.net/asistencias/asistenciasJSON',
+	baseURL: APIBaseUrl + 'asistencias/asistenciasJSON',
 })
 
-export async function getAsistencias(): Promise<Asistencia[] | null> {
+export async function getAsistencias(): Promise<Asistencia[]> {
 	return apiAsistencia
 		.get('/')
 		.then((res) => res.data)
@@ -22,8 +23,4 @@ export async function getAsistencias(): Promise<Asistencia[] | null> {
 				asistencia: asistencia.asistio,
 			}))
 		)
-		.catch((err) => {
-			console.log(err)
-			return null
-		})
 }
