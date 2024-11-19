@@ -1,6 +1,7 @@
 ---
 import Button from "@components/SquareButton.astro";
 import { AppPages } from "@constants/pages";
+import BotonPanel from "./BotonPanel";
 ---
 
 <div class="flex flex-col items-center gap-6 dark:text-white">
@@ -10,9 +11,12 @@ import { AppPages } from "@constants/pages";
   </p>
   <body class="bg-gray-100 min-h-screen p-8 flex items-center justify-center">
         <div class="w-full max-w-4xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-40">
-          <Button text="Gestionar usuarios"  href={AppPages.Administrator.Attendance.url} size = "large" />
-          <Button text="Gestionar materias "  href={AppPages.Administrator.Attendance.url} size = "large" />
-          <Button text="Gestionar horarios "  href={AppPages.Administrator.Attendance.url} size = "large" />
+          <BotonPanel text="Gestionar Usuarios"  href= "/administrator/crearUsuario"  />
+          <BotonPanel text="Editar Usuarios"  href= "/administrator/editarUsuario"  />
+          <BotonPanel text="Gestionar Materias "  href={AppPages.Administrator.Attendance.url}  />
+          <BotonPanel text="Editar Materias "  href={AppPages.Administrator.Attendance.url}  />
+          <BotonPanel text="Gestionar horarios "  href={AppPages.Administrator.Attendance.url}  />
+          <BotonPanel text="Editar horarios "  href={AppPages.Administrator.Attendance.url}  />
         </div>
    </body>
 </div>
