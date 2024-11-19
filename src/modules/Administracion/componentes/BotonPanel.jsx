@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
 
-
-export default function BotonPanel({text, href}) {
+export default function BotonPanel({ text, href }) {
   return (
-    <a className= " " href={href}>
-        {text}
-        
-        </a>
-
-  )
+    <a
+      className="p-8 rounded-md text-white text-3xl text-center bg-blue-600"
+      href={href}
+    >
+      {text}
+    </a>
+  );
 }
