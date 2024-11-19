@@ -1,8 +1,9 @@
 import type { ApiUser, RegisterUser } from '@authentication/constants/userTypes'
 import axios from 'axios'
+import { APIBaseUrl } from 'src/env'
 
 const apiAuth = axios.create({
-	baseURL: 'http://asiscan.sytes.net/users/api/',
+	baseURL: APIBaseUrl + 'users/api/',
 })
 
 export function login(user: string, password: string): Promise<ApiUser> {
