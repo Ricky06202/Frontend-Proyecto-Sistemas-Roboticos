@@ -1,0 +1,19 @@
+---
+import logo from "public/Logo.png";
+import "@fontsource/poppins";
+import NavBar from "./components/NavBar.astro";
+import Footer from "./components/Footer.astro";
+import GenericLayout from "./GenericLayout.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<GenericLayout title={title}>
+  <NavBar />
+  <slot />
+  <Footer />
+</GenericLayout>

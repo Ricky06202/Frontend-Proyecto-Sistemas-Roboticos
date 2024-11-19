@@ -1,11 +1,12 @@
 ---
-import StudentLayout from '@attendance/layouts/StudentLayout.astro'
-import Formulario from 'src/modules/Administracion/componentes/GestionUser'
+import StudentLayout from "@attendance/layouts/StudentLayout.astro";
+import BasicLayout from "src/layouts/BasicLayout.astro";
+import Formulario from "src/modules/Administracion/componentes/GestionUser";
 
-const { id } = Astro.params
+const { id } = Astro.params;
 ---
 
-<StudentLayout title='Attendance'>
-<Formulario></Formulario>
+<BasicLayout title="Crear Usuario">
+  <Formulario />
+</BasicLayout>
 
-</StudentLayout>

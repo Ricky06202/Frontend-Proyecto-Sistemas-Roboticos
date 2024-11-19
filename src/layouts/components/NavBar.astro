@@ -1,0 +1,13 @@
+---
+import Logo from "@components/Logo.astro";
+import ButtonUser from "@components/ButtonUser";
+import DarkModeButton from "@components/DarkModeButton";
+---
+
+<nav class="flex flex-wrap items-center justify-between py-8 text-md">
+  <Logo />
+  <div class="flex justify-center items-center gap-8 mr-4">
+    <DarkModeButton client:load />
+    <ButtonUser client:load />
+  </div>
+</nav>

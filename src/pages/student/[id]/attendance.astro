@@ -1,13 +1,11 @@
 ---
-import StudentLayout from '@attendance/layouts/StudentLayout.astro'
-import HistorialAsistencias from '@attendance/components/student/HistorialAsistencias.tsx'
+import StudentLayout from "@attendance/layouts/StudentLayout.astro";
+import HistorialAsistencias from "@attendance/components/student/HistorialAsistencias.tsx";
+import BasicLayout from "src/layouts/BasicLayout.astro";
 
-const { id } = Astro.params
+const { id } = Astro.params;
 ---
 
-<StudentLayout title='Attendance'>
-	<HistorialAsistencias
-		id={Number(id)}
-		client:load
-	/>
-</StudentLayout>
+<BasicLayout title="Asistencia">
+  <HistorialAsistencias id={Number(id)} client:load />
+</BasicLayout>

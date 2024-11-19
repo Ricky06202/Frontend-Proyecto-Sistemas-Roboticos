@@ -1,0 +1,35 @@
+---
+import logo from "public/Logo.png";
+import "@fontsource/poppins";
+import NavBar from "./components/NavBar.astro";
+import Footer from "./components/Footer.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href={logo.src} />
+    <title>{title}</title>
+  </head>
+  <body class="flex justify-center dark:bg-background-dark">
+    <div
+      class="grid gap-8 w-full sm:max-w-[640px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px]"
+    >
+      <slot />
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    font-family: "Poppins", sans-serif;
+  }
+</style>
