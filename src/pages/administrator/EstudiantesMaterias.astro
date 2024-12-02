@@ -1,0 +1,378 @@
+---
+import StudentLayout from '@attendance/layouts/StudentLayout.astro';
+---
+
+<StudentLayout title='Asignación de Estudiantes a Materias'>
+    <div class="container mx-auto p-6 fade-in">
+        <div class="bg-white rounded-xl shadow-2xl p-8 slide-up backdrop-blur-sm">
+            <h2 class="text-3xl font-bold mb-8 text-gray-800 border-b pb-4 glow-text">
+                Asignación de Estudiantes
+            </h2>
+            
+            <!-- Grid de selectores -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+                <!-- Selector de Estudiante -->
+                <div class="fade-in-left group">
+                    <label class="block text-gray-700 font-semibold mb-3 text-lg">Estudiante</label>
+                    <div class="relative">
+                        <select class="w-full p-3 border-2 rounded-xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 
+                                   bg-gray-50 hover:bg-white transition-all duration-300 appearance-none">
+                            <option value="">Seleccionar estudiante...</option>
+                        </select>
+                        <div class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none
+                                  text-blue-500 transition-transform duration-300 group-hover:translate-y-[-45%]">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Selector de Materia -->
+                <div class="fade-in-right group">
+                    <label class="block text-gray-700 font-semibold mb-3 text-lg">Materia</label>
+                    <div class="relative">
+                        <select class="w-full p-3 border-2 rounded-xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 
+                                   bg-gray-50 hover:bg-white transition-all duration-300 appearance-none">
+                            <option value="">Seleccionar materia...</option>
+                        </select>
+                        <div class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none
+                                  text-blue-500 transition-transform duration-300 group-hover:translate-y-[-45%]">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón de Agregar -->
+            <div class="w-full text-center mb-6" style="position: relative; z-index: 9999;">
+                <button 
+                    type="button" 
+                    class="neo-button group relative inline-flex items-center justify-center px-8 py-3
+                           bg-gradient-to-br from-green-50 to-green-100
+                           text-green-600 font-semibold rounded-xl
+                           transform transition-all duration-300
+                           shadow-[6px_6px_12px_#a7f3d0,-6px_-6px_12px_#ffffff]
+                           hover:shadow-[4px_4px_8px_#a7f3d0,-4px_-4px_8px_#ffffff]
+                           active:shadow-[inset_4px_4px_8px_#a7f3d0,inset_-4px_-4px_8px_#ffffff]"
+                >
+                    <svg class="w-5 h-5 mr-2 transition-transform duration-300 ease-out group-hover:scale-110" 
+                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                    </svg>
+                    <span>Agregar a la Materia</span>
+                </button>
+            </div>
+
+            <!-- Horario Semanal -->
+            <div class="mt-10 fade-in-up">
+                <div class="overflow-hidden rounded-xl border border-gray-200 shadow-2xl bg-white relative">
+                    <!-- Indicador de tiempo actual -->
+                    <div class="absolute left-0 w-full h-1 bg-blue-500/20 time-indicator"></div>
+
+                    <table class="min-w-full">
+                        <thead>
+                            <tr class="bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600">
+                                <th class="p-4 text-white font-semibold text-lg border-r border-blue-400/30">
+                                    <div class="flex items-center justify-center gap-2">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        Hora
+                                    </div>
+                                </th>
+                                {['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'].map((dia) => (
+                                    <th class="p-4 text-white font-semibold text-lg border-r border-blue-400/30 relative group">
+                                        <div class="flex items-center justify-center gap-2">
+                                            {dia}
+                                            <div class="absolute bottom-0 left-0 w-full h-1 bg-white transform scale-x-0 
+                                                        group-hover:scale-x-100 transition-transform duration-300"></div>
+                                        </div>
+                                    </th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {[...Array(8)].map((_, i) => (
+                                <tr class="hover:bg-blue-50/50 transition-colors duration-300">
+                                    <td class="p-4 border-b border-r font-medium bg-gradient-to-r from-gray-50 to-white">
+                                        <div class="flex items-center justify-center">
+                                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-lg font-semibold">
+                                                {7 + i}:00
+                                            </span>
+                                        </div>
+                                    </td>
+                                    {[...Array(5)].map(() => (
+                                        <td class="relative p-4 border-b border-r group">
+                                            <div class="absolute inset-0 cell-highlight opacity-0 group-hover:opacity-100 
+                                                        transition-opacity duration-300"></div>
+                                            <div class="relative z-10 h-full min-h-[60px] rounded-lg border-2 border-dashed 
+                                                        border-transparent transition-all duration-300 
+                                                        group-hover:border-blue-200 group-hover:bg-blue-50/50
+                                                        cursor-pointer">
+                                                <div class="absolute inset-0 flex items-center justify-center opacity-0 
+                                                            group-hover:opacity-100 transition-opacity duration-300">
+                                                    <span class="text-blue-500">
+                                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                                                  d="M12 4v16m8-8H4"/>
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    ))}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</StudentLayout>
+
+<style>
+    /* Eliminar animaciones anteriores que puedan causar conflicto */
+    .fade-in, .slide-up, .fade-in-left, .fade-in-right, .fade-in-up {
+        animation-duration: 0.6s;
+        animation-fill-mode: both;
+    }
+
+    /* Simplificar las animaciones del botón */
+    button {
+        position: relative;
+        z-index: 10;
+        transform: translateZ(0); /* Forzar composición de capas */
+    }
+
+    button:hover {
+        transform: scale(1.05);
+    }
+
+    /* Eliminar animaciones complejas que puedan causar problemas */
+    .btn-animated,
+    .cell-highlight,
+    .time-indicator {
+        animation: none;
+    }
+
+    /* Eliminar efectos de brillo que puedan estar causando problemas */
+    .cell-highlight::after,
+    .btn-animated::before {
+        display: none;
+    }
+
+    .cell-hover {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cell-hover::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .cell-hover:hover::after {
+        opacity: 1;
+    }
+
+    .glow-text {
+        text-shadow: 0 0 10px rgba(59, 130, 246, 0.1);
+    }
+
+    .cell-highlight {
+        background: radial-gradient(
+            circle at center,
+            rgba(59, 130, 246, 0.1) 0%,
+            rgba(59, 130, 246, 0.05) 50%,
+            transparent 70%
+        );
+    }
+
+    .time-indicator {
+        animation: timeIndicator 60s linear infinite;
+    }
+
+    @keyframes timeIndicator {
+        0% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(100%);
+        }
+    }
+
+    /* Efecto de brillo en hover */
+    .cell-highlight::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+            45deg,
+            transparent 45%,
+            rgba(255, 255, 255, 0.15) 48%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(255, 255, 255, 0.15) 52%,
+            transparent 55%
+        );
+        transform: rotate(45deg);
+        animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+        0% {
+            transform: translateX(-100%) rotate(45deg);
+        }
+        100% {
+            transform: translateX(100%) rotate(45deg);
+        }
+    }
+
+    /* Animaciones para el botón */
+    .btn-animated {
+        animation: buttonPulse 2s infinite;
+        position: relative;
+    }
+
+    .btn-animated::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        background-size: 200% 200%;
+        animation: buttonShine 3s linear infinite;
+    }
+
+    @keyframes buttonPulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.4);
+        }
+        70% {
+            box-shadow: 0 0 0 10px rgba(22, 163, 74, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(22, 163, 74, 0);
+        }
+    }
+
+    @keyframes buttonShine {
+        0% {
+            background-position: 200% 0;
+        }
+        100% {
+            background-position: -200% 0;
+        }
+    }
+
+    /* Efecto hover mejorado */
+    .btn-animated:hover {
+        animation: none;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px -10px rgba(22, 163, 74, 0.5);
+    }
+
+    .btn-animated:active {
+        transform: translateY(0);
+        box-shadow: 0 5px 10px -5px rgba(22, 163, 74, 0.5);
+    }
+
+    button {
+        position: relative;
+        z-index: 50; /* Aseguramos que esté por encima */
+    }
+
+    /* Animación de pulso suave */
+    @keyframes softPulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+        }
+        70% {
+            box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+        }
+    }
+
+    button {
+        animation: softPulse 2s infinite;
+    }
+
+    /* Detener la animación de pulso en hover */
+    button:hover {
+        animation: none;
+    }
+
+    /* Efecto al hacer click */
+    button:active {
+        transform: scale(0.98);
+        box-shadow: 0 2px 8px rgba(34, 197, 94, 0.25);
+    }
+
+    /* Estilos para el botón neomórfico */
+    .neo-button {
+        transition: all 0.3s ease;
+    }
+    
+    /* Estilos para el botón glassmórfico */
+    .glass-button {
+        transition: all 0.5s ease;
+    }
+    .glass-button::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 2px;
+        background: linear-gradient(45deg, #22c55e, #10b981);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+    }
+
+    /* Estilos para el botón con borde animado */
+    .border-animation-button::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 2px;
+        background: linear-gradient(45deg, #22c55e, #10b981);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+    .border-animation-button:hover::before {
+        opacity: 1;
+    }
+
+    @keyframes borderAnimation {
+        0% {
+            background-position: 0% 50%;
+        }
+        100% {
+            background-position: 130% 50%;
+        }
+    }
+</style>

@@ -2,87 +2,83 @@
 import StudentLayout from '@attendance/layouts/StudentLayout.astro'
 ---
 
-<StudentLayout title='Crear Usuario'>
+<StudentLayout title='Gestión de Materias'>
     <div class="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-50 py-12">
         <div class="container mx-auto px-4 max-w-4xl">
             <!-- Encabezado con efecto de gradiente -->
             <div class="mb-10 text-center">
                 <h1 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600 mb-3">
-                    Gestión de Usuarios
+                    Gestión de Materias
                 </h1>
-                <p class="text-gray-600 text-xl">Crear nuevo usuario en el sistema</p>
+                <p class="text-gray-600 text-xl">Crear nueva materia en el sistema</p>
             </div>
 
             <!-- Card principal con efecto de cristal -->
             <div class="backdrop-blur-lg bg-white/80 rounded-2xl shadow-2xl p-8 border border-white/20">
-                <form class="space-y-8" id="usuarioForm">
+                <form class="space-y-8" id="materiaForm">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <!-- Nombre -->
+                        <!-- Nombre de la Materia -->
                         <div class="space-y-2">
                             <label for="nombre" class="block text-sm font-bold text-gray-700 uppercase tracking-wide">
-                                Nombre Completo
+                                Nombre de la Materia
                             </label>
                             <input 
                                 type="text" 
                                 id="nombre" 
                                 name="nombre" 
                                 class="w-full px-5 py-3 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-indigo-200 focus:border-indigo-600 outline-none transition-all duration-300 bg-white/50 backdrop-blur-sm"
-                                placeholder="Ej: Juan Pérez"
+                                placeholder="Ej: Matemáticas Discretas"
                                 required
                             />
                         </div>
 
-                        <!-- Email -->
+                        <!-- Código -->
                         <div class="space-y-2">
-                            <label for="email" class="block text-sm font-bold text-gray-700 uppercase tracking-wide">
-                                Correo Electrónico
+                            <label for="codigo" class="block text-sm font-bold text-gray-700 uppercase tracking-wide">
+                                Código
                             </label>
                             <input 
-                                type="email" 
-                                id="email" 
-                                name="email" 
+                                type="text" 
+                                id="codigo" 
+                                name="codigo" 
                                 class="w-full px-5 py-3 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-indigo-200 focus:border-indigo-600 outline-none transition-all duration-300 bg-white/50 backdrop-blur-sm"
-                                placeholder="ejemplo@dominio.com"
+                                placeholder="Ej: MAT101"
                                 required
                             />
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <!-- Contraseña -->
-                        <div class="space-y-2">
-                            <label for="password" class="block text-sm font-bold text-gray-700 uppercase tracking-wide">
-                                Contraseña
-                            </label>
-                            <input 
-                                type="password" 
-                                id="password" 
-                                name="password" 
-                                class="w-full px-5 py-3 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-indigo-200 focus:border-indigo-600 outline-none transition-all duration-300 bg-white/50 backdrop-blur-sm"
-                                required
-                            />
-                        </div>
-
-                        <!-- Rol -->
-                        <div class="space-y-2">
-                            <label for="rol" class="block text-sm font-bold text-gray-700 uppercase tracking-wide">
-                                Rol de Usuario
-                            </label>
-                            <select 
-                                id="rol" 
-                                name="rol" 
-                                class="w-full px-5 py-3 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-indigo-200 focus:border-indigo-600 outline-none transition-all duration-300 bg-white/50 backdrop-blur-sm"
-                                required
-                            >
-                                <option value="">Seleccionar rol</option>
-                                <option value="estudiante">Estudiante</option>
-                                <option value="profesor">Profesor</option>
-                                <option value="administrador">Administrador</option>
-                            </select>
-                        </div>
+                    <!-- Descripción -->
+                    <div class="space-y-2">
+                        <label for="descripcion" class="block text-sm font-bold text-gray-700 uppercase tracking-wide">
+                            Descripción
+                        </label>
+                        <textarea 
+                            id="descripcion" 
+                            name="descripcion" 
+                            rows="4" 
+                            class="w-full px-5 py-3 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-indigo-200 focus:border-indigo-600 outline-none transition-all duration-300 bg-white/50 backdrop-blur-sm resize-none"
+                            placeholder="Describe los objetivos y contenidos principales de la materia..."
+                        ></textarea>
                     </div>
 
-                    <!-- Botón de submit -->
+                    <!-- Créditos -->
+                    <div class="max-w-xs space-y-2">
+                        <label for="creditos" class="block text-sm font-bold text-gray-700 uppercase tracking-wide">
+                            Créditos
+                        </label>
+                        <input 
+                            type="number" 
+                            id="creditos" 
+                            name="creditos" 
+                            min="1"
+                            class="w-full px-5 py-3 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-indigo-200 focus:border-indigo-600 outline-none transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                            placeholder="Ej: 4"
+                            required
+                        />
+                    </div>
+
+                    <!-- Botón de submit - Asegurándonos que esté visible -->
                     <div class="flex justify-end pt-6 relative z-10">
                         <button
                             type="submit"
@@ -97,7 +93,7 @@ import StudentLayout from '@attendance/layouts/StudentLayout.astro'
                                       d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" 
                                       clip-rule="evenodd" />
                             </svg>
-                            Crear Usuario
+                            Registrar Materia
                         </button>
                     </div>
                 </form>
@@ -105,7 +101,7 @@ import StudentLayout from '@attendance/layouts/StudentLayout.astro'
         </div>
     </div>
 
-    <!-- Notificación -->
+    <!-- Notificación mejorada -->
     <div id="notification" class="fixed bottom-4 right-4 hidden">
         <div class="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-8 py-5 rounded-xl shadow-2xl transform transition-all duration-300">
             <p class="flex items-center text-lg font-semibold">
@@ -119,7 +115,7 @@ import StudentLayout from '@attendance/layouts/StudentLayout.astro'
 </StudentLayout>
 
 <script>
-    const form = document.getElementById('usuarioForm');
+    const form = document.getElementById('materiaForm');
     const notification = document.getElementById('notification');
     const notificationMessage = document.getElementById('notificationMessage');
     
@@ -149,12 +145,15 @@ import StudentLayout from '@attendance/layouts/StudentLayout.astro'
         const data = Object.fromEntries(formData);
         
         try {
-            console.log('Datos del usuario:', data);
-            showNotification('Usuario creado exitosamente');
+            
+            console.log('Datos de la materia:', data);
+        
+            
+            showNotification('Materia creada exitosamente');
             (e.target as HTMLFormElement).reset();
         } catch (error) {
-            console.error('Error al crear el usuario:', error);
-            showNotification('Error al crear el usuario', 'error');
+            console.error('Error al crear la materia:', error);
+            showNotification('Error al crear la materia', 'error');
         }
     });
 </script>
@@ -171,7 +170,7 @@ import StudentLayout from '@attendance/layouts/StudentLayout.astro'
     }
 
     /* Animaciones para los inputs */
-    input, textarea, select {
+    input, textarea {
         animation: slideRight 0.5s ease-out backwards;
     }
 
@@ -180,15 +179,15 @@ import StudentLayout from '@attendance/layouts/StudentLayout.astro'
         animation-delay: 0.2s;
     }
 
-    #email {
+    #codigo {
         animation-delay: 0.3s;
     }
 
-    #password {
+    #descripcion {
         animation-delay: 0.4s;
     }
 
-    #rol {
+    #creditos {
         animation-delay: 0.5s;
     }
 
@@ -252,7 +251,7 @@ import StudentLayout from '@attendance/layouts/StudentLayout.astro'
     }
 
     /* Animaciones para hover en inputs */
-    input:hover, textarea:hover, select:hover {
+    input:hover, textarea:hover {
         transform: translateY(-2px);
         transition: transform 0.3s ease;
     }
