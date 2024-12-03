@@ -1,0 +1,286 @@
+---
+// src/pages/administrator/face-recognition.astro
+
+// Definición de interfaces para tipado
+interface FacialArea {
+    x: number;
+    y: number;
+    w: number;
+    h: number;
+}
+
+interface VerifiedFace {
+    name_person: string;
+    distance: number;
+    threshold: number;
+    facial_area: FacialArea;
+}
+
+interface UnknownFace {
+    facial_area: FacialArea;
+    confidence?: number;
+}
+
+interface RecognitionData {
+    image?: string;
+    verified?: VerifiedFace[];
+    unknown?: UnknownFace[];
+    error?: string;
+    message?: string;
+}
+
+const API_URL = 'http://asiscan.sytes.net/cam/api/face-recognition2/';
+
+let data: RecognitionData | null = null;
+let error: string | null = null;
+let loading = false;
+
+try {
+    const response = await fetch(API_URL);
+    data = await response.json() as RecognitionData;
+    
+    // Manejo de errores con validación de tipos
+    if (data) {
+        if (typeof data.error === 'string') {
+            error = data.error;
+        } else if (typeof data.message === 'string' && !data.image) {
+            // Solo consideramos message como error si no hay imagen
+            error = data.message;
+        } else {
+            error = null;
+        }
+    } else {
+        error = 'No se recibieron datos de la API';
+    }
+} catch (e: unknown) {
+    if (e instanceof Error) {
+        error = e.message;
+    } else {
+        error = 'Error desconocido al obtener los datos';
+    }
+}
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados del Reconocimiento Facial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8; /* Fondo gris claro */
+            color: #333;
+        }
+
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background-color: #fff; 
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+        h1 {
+            color: #2196F3; /* Azul */
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .results-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 20px; 
+        }
+
+        .image-container { 
+            grid-column: 1 / -1; 
+            text-align: center;
+        }
+
+        .face-info { 
+            border: 1px solid #ddd; 
+            border-radius: 8px;
+            padding: 15px; 
+            margin-bottom: 10px; 
+            background-color: rgba(255, 255, 255, 0.9); /* Cuadro con fondo translúcido */
+            backdrop-filter: blur(10px); /* Efecto blur */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .timestamp { 
+            color: #666; 
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .error { 
+            color: red; 
+            padding: 10px; 
+            border: 1px solid red; 
+            margin-bottom: 20px; 
+            border-radius: 8px;
+            background-color: rgba(255, 0, 0, 0.1); /* Fondo rojo translúcido */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .debug-info { 
+            background: #f5f5f5; 
+            padding: 15px; 
+            margin: 20px 0; 
+            border: 1px solid #ddd;
+            font-family: monospace;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .refresh-button {
+            padding: 10px 20px;
+            background-color: #2196F3; /* Azul */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .refresh-button:hover {
+            background-color: #1976D2;
+            transform: scale(1.05);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            font-style: italic;
+            color: #666;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .nav-button {
+            padding: 12px;
+            background-color: #2196F3; /* Azul */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 120px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .nav-button:hover {
+            background-color: #1976D2;
+            transform: scale(1.05);
+        }
+
+        .nav-button i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resultados del Reconocimiento Facial</h1>
+        
+        <button onclick="location.reload()" class="refresh-button">
+            Actualizar Resultados
+        </button>
+
+        {loading && (
+            <div class="loading">Cargando resultados...</div>
+        )}
+
+        {error && (
+            <div class="error">
+                <h3>Error:</h3>
+                <p>{error}</p>
+            </div>
+        )}
+
+        {data && !error && (
+            <>
+                <div class="timestamp">
+                    Fecha y hora: {new Date().toLocaleString()}
+                </div>
+                
+                {data.image && (
+                    <div class="results-grid">
+                        <div class="image-container">
+                            <h2>Imagen Procesada</h2>
+                            <img 
+                                src={`data:image/jpeg;base64,${data.image}`} 
+                                alt="Imagen procesada" 
+                                style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
+                            />
+                        </div>
+                        
+                        <div class="verified-faces">
+                            <h2>Rostros Verificados ({data.verified?.length || 0})</h2>
+                            {data.verified?.map((face: VerifiedFace) => (
+                                <div class="face-info">
+                                    <p><strong>Nombre:</strong> {face.name_person}</p>
+                                    <p><strong>Distancia:</strong> {face.distance}</p>
+                                    <p><strong>Umbral:</strong> {face.threshold}</p>
+                                    <p><strong>Área facial:</strong> 
+                                        x: {face.facial_area.x}, 
+                                        y: {face.facial_area.y}, 
+                                        w: {face.facial_area.w}, 
+                                        h: {face.facial_area.h}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                        
+                        <div class="unknown-faces">
+                            <h2>Rostros Desconocidos ({data.unknown?.length || 0})</h2>
+                            {data.unknown?.map((face: UnknownFace, index: number) => (
+                                <div class="face-info">
+                                    <p><strong>Índice:</strong> {index + 1}</p>
+                                    <p><strong>Área facial:</strong> 
+                                        x: {face.facial_area.x}, 
+                                        y: {face.facial_area.y}, 
+                                        w: {face.facial_area.w}, 
+                                        h: {face.facial_area.h}
+                                    </p>
+                                    {typeof face.confidence === 'number' && (
+                                        <p><strong>Confianza:</strong> {face.confidence}</p>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+                
+                {!data.image && !error && (
+                    <p>No se encontró ninguna imagen en los resultados.</p>
+                )}
+            </>
+        )}
+
+        <div class="nav-buttons">
+            <button class="nav-button"><i class="fa fa-arrow-left"></i>Izquierda</button>
+            <button class="nav-button"><i class="fa fa-arrow-right"></i>Derecha</button>
+        </div>
+
+        <div class="debug-info">
+            <h3>Información de Depuración</h3>
+            <pre>{JSON.stringify(data, null, 2)}</pre>
+        </div>
+    </div>
+</body>
+</html>
