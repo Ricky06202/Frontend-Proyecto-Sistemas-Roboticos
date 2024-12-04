@@ -1,4 +1,5 @@
 import type { RegisterUser } from '@authentication/constants/userTypes'
+import { authRedirect } from '@authentication/logic/authRedirect'
 import { toUser } from '@authentication/logic/userConversion'
 import { register } from '@authentication/services/auth'
 import { useAccountStore } from '@authentication/stores/accountStore'
@@ -15,7 +16,7 @@ export const useRegister = (user: RegisterUser) => {
 				setUser(toUser(response))
 				setToken(response.token)
 				console.log(response)
-				window.location.href = AppPages.Student(response.id).Attendance.url
+				authRedirect(response)
 			})
 			.catch((error) => {
 				alert(error)

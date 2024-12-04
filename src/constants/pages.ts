@@ -53,6 +53,10 @@ export const AppPages = {
 			title: 'Attendance',
 			url: '/administrator/attendance',
 		},
+		Panel: {
+			title: 'Panel',
+			url: '/administrator/panel',
+		},
 	},
 }
 

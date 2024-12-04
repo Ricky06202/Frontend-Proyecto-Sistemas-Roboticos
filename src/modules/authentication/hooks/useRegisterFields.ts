@@ -8,7 +8,7 @@ export const useRegisterFields = () => {
 		email: '',
 		first_name: '',
 		last_name: '',
-		groups: [3],
+		groups: ['Admin'],
 	})
 	const [password, setPassword] = useState('')
 	const [confirmPassword, setConfirmPassword] = useState('')
