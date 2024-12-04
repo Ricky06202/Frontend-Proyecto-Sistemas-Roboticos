@@ -23,5 +23,16 @@ export const useRegister = (user: RegisterUser) => {
 			})
 	}
 
-	return { handleRegister }
+	const handleRegisterOnly = (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault()
+		register(user)
+			.then((response) => {
+				console.log(response)
+			})
+			.catch((error) => {
+				alert(error)
+			})
+	}
+
+	return { handleRegister, handleRegisterOnly }
 }
