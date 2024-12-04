@@ -18,3 +18,7 @@ export function login(user: string, password: string): Promise<ApiUser> {
 export function register(user: RegisterUser): Promise<ApiUser> {
 	return apiAuth.post('register/', user).then((response) => response.data)
 }
+
+export function editUser(user: RegisterUser): Promise<ApiUser> {
+	return apiAuth.put('register/', user).then((response) => response.data)
+}

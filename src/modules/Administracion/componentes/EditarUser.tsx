@@ -1,25 +1,39 @@
+import type { RegisterUser } from '@authentication/constants/userTypes'
+import { useRegister } from '@authentication/hooks/useRegister'
 import React, { useState } from 'react'
 
-export default function Formularioeditar() {
-	const [formData, setFormData] = useState({
-		name: '',
-		apellido: '',
-		email: '',
-		role: '',
+export default function Formulario() {
+	const [formData, setFormData] = useState<RegisterUser>({
+		username: '',
 		password: '',
+		email: '',
+		first_name: '',
+		last_name: '',
+		groups: ['Estudiante'],
 	})
 
-	const handleChange = (e) => {
+	const { handleEditUser } = useRegister(formData)
+
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target
+		if (name === 'groups') {
+			setFormData((prevData) => ({
+				...prevData,
+				groups: [value as 'Estudiante' | 'Profesor' | 'Admin'],
+			}))
+			return
+		}
 		setFormData((prevData) => ({
 			...prevData,
 			[name]: value,
 		}))
 	}
 
-	const handleSubmit = (e) => {
-		e.preventDefault()
-		console.log('Datos del formulario enviados:', formData)
+	const handleChangeSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+		setFormData((prevData) => ({
+			...prevData,
+			groups: [e.target.value as 'Estudiante' | 'Profesor' | 'Admin'],
+		}))
 	}
 
 	return (
@@ -27,12 +41,12 @@ export default function Formularioeditar() {
 			{/* Título */}
 			<h2 className='text-6xl font-bold justify-center'>Editar información del Usuario</h2>
 			<p className='text-xl text-center p-8'>
-				En esta sección el administrador podra editar la informacion del usuario.
+				En esta sección el administrador podrá editar la información del usuario.
 			</p>
 
 			{/* Formulario para la gestión de usuarios */}
 			<form
-				onSubmit={handleSubmit}
+				onSubmit={handleEditUser}
 				className='user-form bg-gray-100 p-8 rounded-lg shadow-lg w-full max-w-md'
 			>
 				<h3 className='text-2xl font-semibold mb-6'>Ingrese los datos correspondientes</h3>
@@ -40,16 +54,36 @@ export default function Formularioeditar() {
 				{/* Campo de nombre */}
 				<div className='form-group mb-4'>
 					<label
-						htmlFor='name'
+						htmlFor='username'
 						className='block text-gray-900 font-medium mb-2'
 					>
 						Nombre:
 					</label>
 					<input
 						type='text'
-						id='name'
-						name='name'
-						value={formData.name}
+						id='username'
+						name='username'
+						value={formData.username}
+						onChange={handleChange}
+						placeholder=' '
+						required
+						className='w-full p-2 border border-gray-300 rounded'
+					/>
+				</div>
+
+				{/* Campo de nombre */}
+				<div className='form-group mb-4'>
+					<label
+						htmlFor='first_name'
+						className='block text-gray-900 font-medium mb-2'
+					>
+						Nombre:
+					</label>
+					<input
+						type='text'
+						id='first_name'
+						name='first_name'
+						value={formData.first_name}
 						onChange={handleChange}
 						placeholder=' '
 						required
@@ -60,16 +94,16 @@ export default function Formularioeditar() {
 				{/* Campo de apellido */}
 				<div className='form-group mb-4'>
 					<label
-						htmlFor='apellido'
+						htmlFor='last_name'
 						className='block text-gray-900 font-medium mb-2'
 					>
 						Apellido:
 					</label>
 					<input
 						type='text'
-						id='apellido'
-						name='aapellido'
-						value={formData.apellido}
+						id='last_name'
+						name='last_name'
+						value={formData.last_name}
 						onChange={handleChange}
 						placeholder=''
 						required
@@ -100,27 +134,22 @@ export default function Formularioeditar() {
 				{/* Campo de rol */}
 				<div className='form-group mb-4'>
 					<label
-						htmlFor='role'
+						htmlFor='groups'
 						className='block text-gray-700 font-medium mb-2'
 					>
 						Rol:
 					</label>
 					<select
-						id='role'
-						name='role'
-						value={formData.role}
-						onChange={handleChange}
+						id='groups'
+						name='groups'
+						value={formData.groups[0]}
+						onChange={handleChangeSelect}
 						required
 						className='w-full p-2 border border-gray-300 rounded'
 					>
-						<option
-							value=''
-							disabled
-						>
-							Selecciona un rol
-						</option>
-						<option value='student'>Estudiante</option>
-						<option value='teacher'>Profesor</option>
+						<option value='Estudiante'>Estudiante</option>
+						<option value='Profesor'>Profesor</option>
+						<option value='Admin'>Admin</option>
 					</select>
 				</div>
 
@@ -138,7 +167,7 @@ export default function Formularioeditar() {
 						name='password'
 						value={formData.password}
 						onChange={handleChange}
-						placeholder='Crear contraseña nueva'
+						placeholder='Crea una contraseña segura'
 						required
 						className='w-full p-2 border border-gray-300 rounded'
 					/>
@@ -149,7 +178,7 @@ export default function Formularioeditar() {
 					type='submit'
 					className='w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700'
 				>
-					Editar Información
+					Editar Usuario
 				</button>
 			</form>
 		</div>

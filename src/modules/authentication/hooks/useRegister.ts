@@ -1,7 +1,7 @@
 import type { RegisterUser } from '@authentication/constants/userTypes'
 import { authRedirect } from '@authentication/logic/authRedirect'
 import { toUser } from '@authentication/logic/userConversion'
-import { register } from '@authentication/services/auth'
+import { editUser, register } from '@authentication/services/auth'
 import { useAccountStore } from '@authentication/stores/accountStore'
 import { AppPages } from '@constants/pages'
 
@@ -34,5 +34,17 @@ export const useRegister = (user: RegisterUser) => {
 			})
 	}
 
-	return { handleRegister, handleRegisterOnly }
+	const handleEditUser = (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault()
+		alert('Coming soon!')
+		// editUser(user)
+		// 	.then((response) => {
+		// 		console.log(response)
+		// 	})
+		// 	.catch((error) => {
+		// 		alert(error)
+		// 	})
+	}
+
+	return { handleRegister, handleRegisterOnly, handleEditUser }
 }
